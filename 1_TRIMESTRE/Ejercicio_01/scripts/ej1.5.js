@@ -2,7 +2,7 @@
 let estudiantes = [
   { nombre: "Ana", apellidos: "García López", calificacion: 8, aprobado: true },
   { nombre: "Luis", apellidos: "Martínez Pérez", calificacion: 4, aprobado: false },
-  { nombre: "María", apellidos: "Fernández Díaz", calificacion: 6, aprobado: false } // <- incoherencia
+  { nombre: "María", apellidos: "Fernández Díaz", calificacion: 6, aprobado: false } 
 ];
  
 
