@@ -22,6 +22,6 @@ export default function resumenInventario(inventario) {
     console.log(`Resumen del Inventario:`);
     console.log(`- Total de productos: ${totalProductos}`);
     console.log(`- Categorías distintas: ${categoriasUnicas}`);
-    console.log(`- Valor total del inventario: ${valorTotal.toFixed(2)}€`);
+    console.log(`- Valor total del inventario: ${valorTotal}€`);
 }
 

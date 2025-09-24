@@ -21,6 +21,6 @@ const productosAgotados = listarProductosAgotados(inventario);
 console.log("Productos agotados:", productosAgotados);
 
 const valorTotal = calcularValorTotalInventario(inventario);
-console.log(`Valor total del inventario: ${valorTotal.toFixed(2)}€`);
+console.log(`Valor total del inventario: ${valorTotal}€`);
 
 resumenInventario(inventario);
