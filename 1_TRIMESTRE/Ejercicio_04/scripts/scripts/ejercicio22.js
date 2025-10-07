@@ -1,0 +1,1 @@
+﻿document.getElementById("formulario-contacto").addEventListener("submit", e=>{e.preventDefault(); const n=e.target.querySelector("[name=nombre]").value; const m=e.target.querySelector("[name=mensaje]").value; console.log({nombre:n,mensaje:m});});
