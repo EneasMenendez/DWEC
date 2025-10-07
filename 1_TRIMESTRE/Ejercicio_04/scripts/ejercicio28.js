@@ -1,1 +1,7 @@
-﻿const categorias=Array.from(document.querySelectorAll(".card .categoria")).map(c=>c.textContent); console.log(categorias);
+﻿(function() {
+  const categorias = document.querySelectorAll('.categoria');
+  const nombresCategorias = Array.prototype.map.call(categorias, function(categoria) {
+    return categoria.textContent;
+  });
+  console.log('Ejercicio 28:', nombresCategorias);
+})();

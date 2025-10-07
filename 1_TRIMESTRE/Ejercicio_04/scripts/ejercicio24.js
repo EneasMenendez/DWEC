@@ -1,1 +1,6 @@
-﻿document.querySelectorAll(".card h2").forEach(h2=>h2.textContent="[CURSO] "+h2.textContent);
+﻿(function() {
+  const titulosCursos = document.querySelectorAll('.card h2');
+  titulosCursos.forEach(function(titulo) {
+    titulo.textContent = `[CURSO] ${titulo.textContent}`;
+  });
+})();
