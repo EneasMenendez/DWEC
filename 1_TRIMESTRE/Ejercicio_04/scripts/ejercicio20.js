@@ -1,1 +1,4 @@
-﻿document.querySelector("nav a:nth-child(2)").closest("header").querySelector("h1").style.color = "orange";
+﻿const segundoEnlace = document.querySelector('.navegacion a:nth-child(2)');
+if (segundoEnlace && segundoEnlace.parentElement && segundoEnlace.parentElement.previousElementSibling) {
+  segundoEnlace.parentElement.previousElementSibling.style.color = 'orange';
+}

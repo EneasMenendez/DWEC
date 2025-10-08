@@ -1,1 +1,7 @@
-﻿document.querySelectorAll(".card .categoria").forEach(cat=>{if(cat.textContent.includes("Desarrollo Web"))cat.closest(".card").style.background="#f0f0f0";});
+﻿const tarjetas = document.querySelectorAll('.card');
+tarjetas.forEach(function(tarjeta) {
+  const categoria = tarjeta.querySelector('.categoria');
+  if (categoria && categoria.textContent === 'Desarrollo Web') {
+    tarjeta.style.backgroundColor = '#f0f0f0';
+  }
+});

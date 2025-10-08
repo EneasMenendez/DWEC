@@ -1,1 +1,8 @@
-﻿document.querySelector("#formulario-contacto textarea").placeholder="Escribe aquí tu consulta detallada";
+﻿const seccionFormulario = document.getElementById('formulario-seccion');
+  if (seccionFormulario) {
+    const textarea = seccionFormulario.querySelector('textarea');
+    if (textarea) {
+      textarea.placeholder = 'Escribe aquí tu consulta';
+    }
+  }
+

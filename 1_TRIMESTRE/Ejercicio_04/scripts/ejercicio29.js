@@ -1,1 +1,4 @@
-﻿document.querySelectorAll("nav a").forEach(a=>a.setAttribute("data-tipo","enlace-nav"));
+﻿const enlacesNav = document.querySelectorAll('.navegacion a');
+Array.prototype.forEach.call(enlacesNav, function(enlace) {
+  enlace.setAttribute('data-tipo', 'enlace-nav');
+});
