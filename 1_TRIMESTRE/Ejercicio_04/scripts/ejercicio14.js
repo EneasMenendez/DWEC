@@ -1,1 +1,1 @@
-﻿document.querySelector(".premium .boton").textContent = "Ver Detalles Premium";
+﻿document.querySelector("#btn-info-premium").textContent = "Ver Detalles Premium";

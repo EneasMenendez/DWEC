@@ -1,1 +1,5 @@
-﻿const totalCursos = document.querySelectorAll(".card").length; document.querySelector("nav a[href=#contacto]").textContent = `Contacto (${totalCursos} Cursos)`;
+﻿const numCursos = document.querySelectorAll('.card').length;
+  const enlaceContacto = document.querySelector('.navegacion a:last-child');
+  if (enlaceContacto) {
+    enlaceContacto.textContent = `Contacto (${numCursos} Cursos)`;
+  }
