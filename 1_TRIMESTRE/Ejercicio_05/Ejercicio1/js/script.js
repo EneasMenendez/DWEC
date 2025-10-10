@@ -5,6 +5,7 @@ function cambiarImagenPrincipal(indice) {
   if (miniaturas[indice]) {
     const nuevaSrc = miniaturas[indice].getAttribute('src');
     imagenPrincipal.setAttribute('src', nuevaSrc);
+    
     resaltarMiniatura(indice);
   }
 }
