@@ -1,4 +1,4 @@
-
+// Función principal para cambiar la imagen
 function cambiarImagenPrincipal(indice) {
   const miniaturas = document.querySelectorAll('.miniatura'); 
   const imagenPrincipal = document.getElementById('imagen-principal');

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Práctica de DOM</title>
+    <link rel="stylesheet" href="estilos.css">
+<body>
+    
+    <header id="header-principal">
+        <h1 id="titulo-principal">Control Manual de Arcordeón de FAQ</h1>  
+    </header>
+    <ul>   
+        <li>
+            <h2 onclick="revelarRespuesta(this)">¿Esta es la primera pregunta?</h2>
+            <p class="oculto">Esta es la respesta oculta a la primera pregunta</p>
+        </li>
+        <li>
+            <h2 onclick="revelarRespuesta(this)">¿Esta es la segunda pregunta?</h2>
+            <p class="oculto">Esta es la respesta oculta a la primera pregunta</p>
+        </li>
+    </ul>
+</body>
+    <script src="./js/script.js"></script>
+</html>

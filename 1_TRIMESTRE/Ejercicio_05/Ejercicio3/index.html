@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Práctica de DOM</title>
+    <link rel="stylesheet" href="estilos.css">
+<body>
+    
+    <header id="header-principal">
+        <h1 id="titulo-principal">Informe de validacion de formulario</h1>  
+    </header>
+    <form action="">
+        <div class="form-group">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <div id="informe-errores">
+        </div>
+        <button type="button" id="validar">Enviar</button>
+    </form>
+
+</body>
+    <script src="./js/script.js"></script>
+</html>
