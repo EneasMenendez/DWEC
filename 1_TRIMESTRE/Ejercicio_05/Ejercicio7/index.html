@@ -1,23 +1,35 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Práctica de DOM</title>
     <link rel="stylesheet" href="estilos.css">
+
 <body>
-    
+
     <header id="header-principal">
-        <h1 id="titulo-principal">Galeria de Imagenes Programada</h1>  
+        <h1 id="titulo-principal">Carrito de la compra con total dinamico</h1>
     </header>
-    <div>
-        <img id="imagen-principal" src="./img/1.jpg" alt="Imagen Grande">
-        <div id="miniaturas">
-            <img class="miniatura" src="./img/2.jpg" alt="Imagen 1">
-            <img class="miniatura" src="./img/3.jpg" alt="Imagen 2">
-            <img class="miniatura" src="./img/4.jpg" alt="Imagen 3">
-            <img class="miniatura" src="./img/5.jpg" alt="Imagen 4">
-    </div>
+
+    <ul id="productos">
+        <li class="producto" data-price="10">
+            Prod. A - $10 <button>Añadir al carrito</button>
+        </li>
+        <li class="producto" data-price="20">
+            Prod. B - $20 <button>Añadir al carrito</button>
+        </li>
+        <li class="producto" data-price="15">
+            Prod. C - $15 <button>Añadir al carrito</button>
+        </li>
+    </ul>
+
+    <h3>Carrito</h3>
+    <ul id="carrito"></ul>
+    <p>Total: $<span id="total">0.00</span></p>
+
 </body>
-    <script src="./js/script.js"></script>
+<script src="./js/script.js"></script>
+
 </html>

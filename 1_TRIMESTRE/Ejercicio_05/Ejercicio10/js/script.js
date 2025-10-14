@@ -1,34 +1,17 @@
-// Función principal para cambiar la imagen
-function cambiarImagenPrincipal(indice) {
-  const miniaturas = document.querySelectorAll('.miniatura'); 
-  const imagenPrincipal = document.getElementById('imagen-principal');
+const inputNum = document.getElementById('cajaTexto');
+const btnGenerar = document.getElementById('generar');
+const resultado = document.getElementById('resultado');
 
-  if (miniaturas[indice]) {
-    const lugarMiniatura = miniaturas[indice].getAttribute('src'); 
-    const lugarLugarPrincipal = imagenPrincipal.getAttribute('src');
+btnGenerar.addEventListener('click', () => {
+  const cantidad = parseInt(inputNum.value);
+  if (isNaN(cantidad) || cantidad <= 0) return;
+  resultado.innerHTML = '';
+  const fragment = document.createDocumentFragment();
 
-    imagenPrincipal.setAttribute('src', lugarMiniatura);
-    miniaturas[indice].setAttribute('src', lugarLugarPrincipal);
-
-    resaltarMiniatura(indice);
+  for (let i = 0; i < cantidad; i++) {
+    const p = document.createElement('p');
+    p.textContent = 'Lorem ipsum';
+    fragment.appendChild(p);
   }
-}
-
-function resaltarMiniatura(indice) {
-  const miniaturas = document.quserySelectorAll('.miniatura');
-
-  miniaturas.forEach((miniatura, i) => {
-    if (i === indice) {
-      miniatura.classList.add('activa'); 
-    } else {
-      miniatura.classList.remove('activa'); 
-    }
-  });
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-  const miniaturas = document.querySelectorAll('.miniatura');
-  miniaturas.forEach((miniatura, indice) => {
-    miniatura.addEventListener('click', () => cambiarImagenPrincipal(indice));
-  });
+  resultado.appendChild(fragment);
 });

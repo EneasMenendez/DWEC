@@ -1,34 +1,29 @@
-// Función principal para cambiar la imagen
-function cambiarImagenPrincipal(indice) {
-  const miniaturas = document.querySelectorAll('.miniatura'); 
-  const imagenPrincipal = document.getElementById('imagen-principal');
+const productos = document.querySelectorAll('.producto');
+const carrito = document.getElementById('carrito');
+const total = document.getElementById('total');
 
-  if (miniaturas[indice]) {
-    const lugarMiniatura = miniaturas[indice].getAttribute('src'); 
-    const lugarLugarPrincipal = imagenPrincipal.getAttribute('src');
+function calcularTotal() {
+  let suma = 0;
+  carrito.querySelectorAll('li').forEach(li => {
+    suma += parseFloat(li.dataset.price);
+  });
+  total.textContent = suma.toFixed(2);
+}
 
-    imagenPrincipal.setAttribute('src', lugarMiniatura);
-    miniaturas[indice].setAttribute('src', lugarLugarPrincipal);
+productos.forEach(prod => {
+  prod.querySelector('button').addEventListener('click', () => {
+    const item = prod.cloneNode(true);
+    const btnQuitar = document.createElement('button');
+    btnQuitar.textContent = 'Quitar';
+    item.appendChild(btnQuitar);
+    carrito.appendChild(item);
+    calcularTotal();
+  });
+});
 
-    resaltarMiniatura(indice);
+carrito.addEventListener('click', e => {
+  if (e.target.textContent === 'Quitar') {
+    e.target.parentNode.remove();
+    calcularTotal();
   }
-}
-
-function resaltarMiniatura(indice) {
-  const miniaturas = document.quserySelectorAll('.miniatura');
-
-  miniaturas.forEach((miniatura, i) => {
-    if (i === indice) {
-      miniatura.classList.add('activa'); 
-    } else {
-      miniatura.classList.remove('activa'); 
-    }
-  });
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-  const miniaturas = document.querySelectorAll('.miniatura');
-  miniaturas.forEach((miniatura, indice) => {
-    miniatura.addEventListener('click', () => cambiarImagenPrincipal(indice));
-  });
 });

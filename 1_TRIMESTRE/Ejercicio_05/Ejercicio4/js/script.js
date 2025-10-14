@@ -1,34 +1,20 @@
-// Función principal para cambiar la imagen
-function cambiarImagenPrincipal(indice) {
-  const miniaturas = document.querySelectorAll('.miniatura'); 
-  const imagenPrincipal = document.getElementById('imagen-principal');
+const usuarios = [{nombre: 'Ana', edad: 25}, {nombre: 'Luis', edad: 30}];
 
-  if (miniaturas[indice]) {
-    const lugarMiniatura = miniaturas[indice].getAttribute('src'); 
-    const lugarLugarPrincipal = imagenPrincipal.getAttribute('src');
+function crearTabla(data) {
+  const tabla = document.createElement('table');
+  const fragment = document.createDocumentFragment();
 
-    imagenPrincipal.setAttribute('src', lugarMiniatura);
-    miniaturas[indice].setAttribute('src', lugarLugarPrincipal);
-
-    resaltarMiniatura(indice);
-  }
-}
-
-function resaltarMiniatura(indice) {
-  const miniaturas = document.quserySelectorAll('.miniatura');
-
-  miniaturas.forEach((miniatura, i) => {
-    if (i === indice) {
-      miniatura.classList.add('activa'); 
-    } else {
-      miniatura.classList.remove('activa'); 
+  data.forEach(obj => {
+    const fila = document.createElement('tr');
+    for (let valor in obj) {
+      const celda = document.createElement('td');
+      celda.textContent = obj[valor];
+      fila.appendChild(celda);
     }
+    tabla.appendChild(fila);
   });
+  
+  fragment.appendChild(tabla);
+  document.getElementById('contenedor-tabla').appendChild(fragment);
 }
-
-document.addEventListener('DOMContentLoaded', () => {
-  const miniaturas = document.querySelectorAll('.miniatura');
-  miniaturas.forEach((miniatura, indice) => {
-    miniatura.addEventListener('click', () => cambiarImagenPrincipal(indice));
-  });
-});
+crearTabla(usuarios);
