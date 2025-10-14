@@ -1,0 +1,82 @@
+table {
+    border: 2px;
+}
+
+#formulario {
+    border-radius: 10px;
+}
+
+button {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    align-items: center;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    margin-top: 2rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#formulario {
+    width: 100%;
+    align-items: center;
+    gap: 0.5rem;
+    border-radius: 5px;
+    padding: 1rem;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+}
+
+#cajaTexto {
+    width: flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-radius: 5px;
+    padding: 1rem;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+}
+
+.interiorForm {
+    width: flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-radius: 5px;
+    padding: 1rem;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+}
+
+table {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto 1.25rem;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+thead th {
+    background-color: #6e6e6e; 
+    color: #ffffff;
+    text-align: center;
+    padding: 0.75rem 1rem;
+    font-weight: 700;
+    font-size: 0.95rem;
+    letter-spacing: 0.2px;
+    margin : auto;
+}
+th, td {
+    padding: 0.75rem 1rem;
+    vertical-align: middle;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+}

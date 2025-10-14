@@ -1,0 +1,13 @@
+button {
+    color: white;
+    background-color: rgb(53, 53, 53);
+    border-radius: 5px;
+}
+
+#modal {
+    display: none;
+}
+
+#modalView {
+    display: flex;
+}
