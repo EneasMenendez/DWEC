@@ -1,12 +1,45 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
     <title>Ejercicio_06_X</title>
 </head>
+
 <body>
-<script type="module" src="./js/main.js"></script> 
+
+    <div class="productos">
+        <h2>Productos Disponibles</h2>
+
+        <div class="producto">
+            <h3 class="nombre">Portátil Pro</h3>
+            <p class="precio">Precio: <span>1200</span> €</p>
+            <button class="añadir">Añadir al carrito</button>
+        </div>
+
+        <div class="producto">
+            <h3 class="nombre">Ratón Inalámbrico</h3>
+            <p class="precio">Precio: <span>25</span> €</p>
+            <button class="añadir">Añadir al carrito</button>
+        </div>
+
+        <div class="producto">
+            <h3 class="nombre">Teclado Mecánico</h3>
+            <p class="precio">Precio: <span>90</span> €</p>
+            <button class="añadir">Añadir al carrito</button>
+        </div>
+    </div>
+
+    <div class="carrito">
+        <h2>Tu Carrito</h2>
+        <ul id="listaCarrito"></ul>
+        <p class="total">Total: <span id="total">0.00</span> €</p>
+    </div>
+
+
+    <script type="module" src="./js/main.js"></script>
 </body>
+
 </html>

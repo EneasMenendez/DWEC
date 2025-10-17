@@ -1,0 +1,40 @@
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.productos, .carrito {
+  border: 1px solid #ccc;
+  padding: 15px;
+  width: 300px;
+  margin: 20px auto;
+  border-radius: 8px;
+}
+
+.producto {
+  border-bottom: 1px solid #ddd;
+  padding: 10px 0;
+}
+
+.producto:last-child {
+  border-bottom: none;
+}
+
+button {
+  background-color: #f4f4f4;
+  border: 1px solid #999;
+  border-radius: 4px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.carrito ul {
+  list-style: none;
+  padding: 0;
+}
+
+.total {
+  font-weight: bold;
+  border-top: 1px solid #999;
+  margin-top: 10px;
+  padding-top: 10px;
+}
