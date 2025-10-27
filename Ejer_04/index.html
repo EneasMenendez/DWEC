@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Práctica de DOM</title>
+    <link rel="stylesheet" href="estilos.css">
+       
+</head>
+<body>
+
+    <header id="header-principal">
+        <h1 id="titulo-principal">Conceptos del DOM</h1>
+        <nav class="navegacion">
+            <a href="#">Inicio</a>
+            <a href="#">Cursos</a>
+            <a href="#">Contacto</a>
+        </nav>
+    </header>
+
+    <main class="container">
+        <section id="lista-cursos">
+            <div class="card">
+                <img src="img/hacer1.jpg" width="200">
+                <div class="info">
+                    <p class="categoria">Desarrollo Web</p>
+                    <h2>Curso de JavaScript Moderno</h2>
+                </div>
+            </div>
+
+            <div class="card premium">
+                <img src="img/hacer2.jpg" width="200">
+                <div class="info">
+                    <p class="categoria">Diseño</p>
+                    <h2>Curso de CSS Grid y Flexbox</h2>
+                    <button id="btn-info-premium">Más Información</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="img/hacer3.jpg" width="200">
+                <div class="info">
+                    <p class="categoria">Desarrollo Web</p>
+                    <h2>Introducción a React</h2>
+                    <p class="oculto" data-precio="20">Este es un texto oculto con información.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="formulario-seccion">
+            <form id="formulario-contacto">
+                <h2>Contacta con nosotros</h2>
+                <input type="text" id="nombre" name="nombre" placeholder="Tu Nombre">
+                <input type="email" id="email" name="email" placeholder="Tu Email">
+                <textarea id="mensaje" name="mensaje" placeholder="Tu Mensaje"></textarea>
+                <input type="submit" value="Enviar">
+            </form>
+        </section>
+    </main>
+
+    <footer id="footer-principal">
+        <p>Todos los derechos reservados &copy; 2025</p>
+    </footer>   
+    <!--
+        INSTRUCCIONES: Descomenta el ejercicio que quieras ejecutar y abre la consola del navegador (F12).
+        Solo debe haber UN script activo a la vez.
+
+        Los ejercicios van del 1 al 32 y cubren progresivamente:
+          ejercicio1.js  → leer el texto del título principal (querySelector + textContent)
+          ejercicio2.js  → contar enlaces de navegación (querySelectorAll + length)
+          ejercicio3.js  → leer el HTML interno de la tarjeta premium (innerHTML)
+          ejercicio4.js  → coleccionar todas las tarjetas en un Set (querySelectorAll + forEach)
+          ejercicio5.js  → localizar el formulario por ID (getElementById)
+          ejercicio6.js  → acceder a atributos data-* (selector [data-*] + dataset)
+          ejercicio7.js  → seleccionar el campo email dentro del formulario (selector descendiente)
+          ejercicio8.js  → obtener el segundo enlace del menú (children[índice])
+          ejercicio9.js  → cambiar el título principal (textContent escritura)
+          ejercicio10.js → corregir el href del primer enlace (setAttribute)
+          ejercicio11.js → añadir clase CSS al título (classList.add)
+          ejercicio12.js → actualizar el enlace "Contacto" con el número de cursos (template literal)
+          ejercicio13.js → cambiar la imagen del primer curso (propiedad src)
+          ejercicio14.js → cambiar el texto del botón premium (textContent)
+          ejercicio15.js → acceder a la tarjeta vecina (nextElementSibling)
+          ejercicio16.js → subir al contenedor .info desde el botón (parentElement)
+          ejercicio17.js → leer el h2 dentro de la tarjeta premium (selector descendiente)
+          ejercicio18.js → aplicar clase al main desde el footer (previousElementSibling)
+          ejercicio19.js → obtener la imagen subiendo y bajando el DOM (parentElement + firstElementChild)
+          ejercicio20.js → navegar varios niveles para cambiar el color del h1 (traversal encadenado)
+          ejercicio21.js → alert al pulsar el botón premium (addEventListener click)
+          ejercicio22.js → capturar y mostrar datos del formulario sin recargar (submit + preventDefault)
+          ejercicio23.js → mostrar/ocultar párrafo oculto al clic en el título (classList.toggle)
+          ejercicio24.js → añadir prefijo "[CURSO]" a todos los h2 de tarjetas (forEach + template literal)
+          ejercicio25.js → resaltar tarjetas de "Desarrollo Web" (filtrado condicional + classList)
+          ejercicio26.js → crear párrafo "Duración" dinámicamente en cada tarjeta (createElement + appendChild)
+          ejercicio27.js → aplicar borde punteado solo a tarjetas no premium (!classList.contains)
+          ejercicio28.js → extraer categorías a un array y mostrarlo en tabla (push + console.table)
+          ejercicio29.js → añadir data-tipo a todos los enlaces de navegación (setAttribute masivo)
+          ejercicio30.js → cambiar placeholder del textarea del formulario (propiedad placeholder)
+          ejercicio31.js → añadir texto a párrafo oculto de la tarjeta de React (querySelector scoped)
+          ejercicio32.js → añadir clase 'imagen-curso' a todas las imágenes de tarjetas (querySelectorAll compuesto)
+    -->
+    <script src="./scripts/ejercicio1.js"></script>
+    <!--<script src="./scripts/ejercicio2.js"></script>-->
+    <!--<script src="./scripts/ejercicio3.js"></script>-->
+    <!--<script src="./scripts/ejercicio4.js"></script>-->
+    <!--<script src="./scripts/ejercicio5.js"></script>-->
+    <!--<script src="./scripts/ejercicio6.js"></script>-->
+    <!--<script src="./scripts/ejercicio7.js"></script>-->
+    <!--<script src="./scripts/ejercicio8.js"></script>-->
+    <!--<script src="./scripts/ejercicio9.js"></script>-->
+    <!--<script src="./scripts/ejercicio10.js"></script>-->
+    <!--<script src="./scripts/ejercicio11.js"></script>-->
+    <!--<script src="./scripts/ejercicio12.js"></script>-->
+    <!--<script src="./scripts/ejercicio13.js"></script>-->
+    <!--<script src="./scripts/ejercicio14.js"></script>-->
+    <!--<script src="./scripts/ejercicio15.js"></script>-->
+    <!--<script src="./scripts/ejercicio16.js"></script>-->
+    <!--<script src="./scripts/ejercicio17.js"></script>-->
+    <!--<script src="./scripts/ejercicio18.js"></script>-->
+    <!--<script src="./scripts/ejercicio19.js"></script>-->
+    <!--<script src="./scripts/ejercicio20.js"></script>-->
+    <!--<script src="./scripts/ejercicio21.js"></script>-->
+    <!--<script src="./scripts/ejercicio22.js"></script>-->
+    <!--<script src="./scripts/ejercicio23.js"></script>-->
+    <!--<script src="./scripts/ejercicio24.js"></script>-->
+    <!--<script src="./scripts/ejercicio25.js"></script>-->
+    <!--<script src="./scripts/ejercicio26.js"></script>-->
+    <!--<script src="./scripts/ejercicio27.js"></script>-->
+    <!--<script src="./scripts/ejercicio28.js"></script>-->
+    <!--<script src="./scripts/ejercicio29.js"></script>-->
+    <!--<script src="./scripts/ejercicio30.js"></script>-->
+    <!--<script src="./scripts/ejercicio31.js"></script>-->
+    <!--<script src="./scripts/ejercicio32.js"></script>-->
+
+</body>
+</html>
