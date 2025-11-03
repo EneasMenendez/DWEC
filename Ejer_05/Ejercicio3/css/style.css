@@ -1,0 +1,41 @@
+
+  label {
+    display: block;
+    margin-top: 10px;
+  }
+  
+  input {
+    width: 40%;
+    padding: 8px;
+    margin-top: 4px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  button {
+    display: block;
+    width: 10%;
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    border-radius: 4px;
+    margin-top: 15px;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  #informe-errores {
+    margin-top: 15px;
+  }
+
+  .valido{
+    color: green;
+  }
+  .error{
+    color: red;
+  }
+
+  

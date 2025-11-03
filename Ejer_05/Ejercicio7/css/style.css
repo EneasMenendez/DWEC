@@ -1,0 +1,33 @@
+li {
+    margin-bottom: 8px;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+}
+
+button {
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.add-btn {
+    background-color: green;
+    color: white;
+}
+
+.add-btn:hover {
+    background-color: lightgreen;
+}
+
+.remove-btn {
+    background-color: red;
+    color: white;
+}
+
+.remove-btn:hover {
+    background-color: lightcoral;
+}
