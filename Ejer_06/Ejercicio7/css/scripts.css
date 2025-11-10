@@ -1,0 +1,35 @@
+
+table {
+    width: 80%;
+    margin: 20px;
+    border-collapse: collapse;
+    border: 2px solid darkblue;
+}
+
+
+thead td{
+    background-color: lightskyblue;
+    color: black;
+    font-weight: bold;
+    padding: 10px;
+    text-align: center;
+    border: 2px solid darkblue;
+}
+
+.celdaDato {
+    border: 2px solid darkblue;
+    padding: 8px;
+    justify-content: center;
+}
+
+.celdaDato:hover {
+    background-color: lightgray;
+}
+
+input{
+    width: 100%;
+    box-sizing: border-box;
+    padding: 6px;
+    border: 2px solid yellowgreen;
+}
+

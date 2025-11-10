@@ -1,0 +1,18 @@
+button {
+  margin-top: 5px;
+    background-color: lightblue;
+    color: black;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 6px;
+    display: block;
+}
+
+button:hover {
+    background-color: lightcyan;
+}
+button:disabled {
+    background-color: lightgrey;
+    color: gray;
+    cursor: not-allowed;
+}

@@ -1,0 +1,35 @@
+.oculto {
+    display: none;
+}
+
+.bloque {
+    display: block;
+}
+
+#cerrar {
+    background-color: red;
+    width: 5%;
+    border-radius: 4px;
+}
+
+#cerrar:hover {
+    background-color: lightcoral;
+}
+
+
+#modal{
+    background-color: lightblue;
+    padding: 5px 10px;
+    border-radius: 4px;
+    margin-top: 10px;
+}
+#modal:hover {
+    background-color: lightcyan;
+}
+button{
+    display: block;
+    margin-top: 5px;
+}
+p{
+    margin-left:5px;
+}

@@ -1,0 +1,59 @@
+table {
+    border-collapse: collapse;
+    width: 30%;
+    border: 1px solid black;
+
+}
+
+td {
+    text-align: center;
+    border: 1px solid black;
+    padding: 6px;
+}
+
+thead {
+    background-color: lightblue;
+    color: black;
+    font-weight: bold;
+}
+
+form {
+    margin-top: 20px;
+    background-color: #ffffff;
+    width: fit-content;
+    padding: 15px 25px;
+    border-radius: 10px;
+    box-shadow: 0 0 8px black;
+}
+
+label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+input {
+    width: 250px;
+    padding: 6px;
+    margin-top: 5px;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+button {
+
+    margin: 20px auto;
+    background-color: lightblue;
+    color: black;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 6px;
+}
+
+button:hover {
+    background-color: lightcyan;
+}
+
+.oculto {
+    display: none;
+}
