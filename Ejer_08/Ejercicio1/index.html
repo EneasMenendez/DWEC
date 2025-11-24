@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <form>
+        <h1 id="titulo">Diseña tú Pizza</h1>
+        <h2>Tamaño</h1>
+        <div className="tamanio">
+            <label><input type="radio" name="tamaño" data-price="10" checked> Pequeña (10€)</label>
+            <label><input type="radio" name="tamaño" data-price="12"> Mediana (12€)</label>
+            <label><input type="radio" name="tamaño" data-price="15"> Grande (15€)</label>
+        </div>
+
+        <h2>Ingredientes</h1>
+        <div className="ingredientesExtra">
+            <label><input type="checkbox" data-price="1"> Extra de Queso (+1€)</label>
+            <label><input type="checkbox" data-price="1.50"> Pepperoni (+1.50€)</label>
+            <label><input type="checkbox" data-price="0.75"> Champiñones (+0.75€)</label>
+            <label><input type="checkbox" data-price="1"> Piña (+1€)</label>
+        </div>
+        <h2>Tipo de la Masa</h1>
+        <select id="tipoMasa">
+            <option>Selecciona el Tipo de Masa</option>
+            <option data-price="0">Fina</option>
+            <option data-price="1">Normal (+1€)</option>
+            <option data-price="2.50">Rellena de Queso (+2.50€)</option>
+        </select>
+
+        <section>
+            <h1>Precio Total:<span id="total"> </span></h1>
+        </section>
+
+        <button type="submit" id="boton">Realizar Pedido</button>
+        <button type="reset" id="borrar">Borrar Pedido</button>
+
+    </form>
+</body>
+<script src="./scripts/ejercicio1.js"></script>
+
+</html>

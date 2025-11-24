@@ -1,0 +1,82 @@
+
+
+body {
+    background-color: lightgray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 8%;
+}
+
+form {
+    background-color: white;
+    padding: 30px 20px;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 400px;
+    min-width: 300px; 
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#titulo,#total{
+    color: orangered;
+}
+
+
+h2 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: black;
+    font-size: 20px;
+}
+
+.tamanio, .ingredientesExtra {
+    display: flex;
+    flex-direction: column;
+   
+}
+
+label {
+    display: flex;
+    align-items: center;
+    gap: 6px; 
+}
+
+select {
+    width: 100%;
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid black;
+    margin-top: 5px;
+}
+
+
+button {
+    flex: 1;
+    padding: 18px;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    color: white;
+}
+
+#borrar{
+    background-color: brown;
+    margin-left:20px;
+}
+#borrar:hover {
+    background-color: lightcoral;
+}
+
+#boton{
+    background-color: green;
+    margin-left:20px;
+}
+#boton:hover {
+    background-color: lightgreen;
+}
