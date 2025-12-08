@@ -1,0 +1,16 @@
+#conRed{
+    width: 20px; 
+    height: 20px; 
+    background-color: green; 
+    border-radius: 20px; 
+    position: absolute;
+}
+
+#sinRed{
+    width: 20px; 
+    height: 20px; 
+    background-color: red; 
+    border-radius: 20px; 
+    position: absolute;
+}
+

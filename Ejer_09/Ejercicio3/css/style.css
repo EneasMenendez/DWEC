@@ -1,0 +1,24 @@
+#botonArriba {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 15px;
+    font-size: 16px;
+    background-color: cornflowerblue;
+    color: white;
+    border-radius: 5px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+ 
+}
+
+#botonArriba.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+p{
+    margin-right: 30px;
+    margin-left:30px ;
+}
