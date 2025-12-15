@@ -1,0 +1,7 @@
+<manuscrito>
+    <texto>El segundo secreto descansa donde las listas guardan conocimiento.</texto>
+    <pista>Busca la palabra más destacada de la lista.</pista>
+    <selector_solucion>ul li strong</selector_solucion>
+    <letra_clave>K</letra_clave>
+    <siguiente_fragmento>fragmento3.xml</siguiente_fragmento>
+</manuscrito>

@@ -1,0 +1,9 @@
+<documento>
+    <id>3</id>
+    <titulo>Declaración de los Derechos</titulo>
+    <fecha>1791</fecha>
+    <imagen>img/doc3.jpg</imagen>
+    <descripcion>Las diez primeras enmiendas a la Constitución de los Estados Unidos.</descripcion>
+    <siguiente>null</siguiente>
+    <anterior>documento_2.xml</anterior>
+</documento>
