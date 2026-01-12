@@ -1,0 +1,39 @@
+[
+    {
+      "questionId": "Q001",
+      "text": "¿Cuál NO es un tipo de petición HTTP comúnmente usado en AJAX?",
+      "options": [
+        {"id": "A", "text": "GET"},
+        {"id": "B", "text": "POST"},
+        {"id": "C", "text": "PULL"},
+        {"id": "D", "text": "PUT"}
+      ],
+      "correctAnswer": "C",
+      "explanation": "PULL no es un método HTTP estándar; GET, POST, PUT, DELETE son los más comunes."
+    },
+    {
+      "questionId": "Q002",
+      "text": "¿Qué método se utiliza para 'parsear' una cadena JSON a un objeto JavaScript?",
+      "options": [
+        {"id": "A", "text": "JSON.toObject()"},
+        {"id": "B", "text": "JSON.parse()"},
+        {"id": "C", "text": "JSON.stringify()"},
+        {"id": "D", "text": "JSON.decode()"}
+      ],
+      "correctAnswer": "B",
+      "explanation": "JSON.parse() convierte una cadena JSON en un objeto JavaScript."
+    },
+    {
+      "questionId": "Q003",
+      "text": "¿Cuál de estos operadores se usa para comparar igualdad estricta en JavaScript?",
+      "options": [
+        {"id": "A", "text": "=="},
+        {"id": "B", "text": "="},
+        {"id": "C", "text": "==="},
+        {"id": "D", "text": "!="}
+      ],
+      "correctAnswer": "C",
+      "explanation": "El operador '===' compara tanto valor como tipo de dato."
+    }
+  ]
+  

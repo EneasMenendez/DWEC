@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo Dinámico de Productos</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="catalog-container">
+        <h1>Catálogo de Productos</h1>
+        <div id="filters">
+            <label for="filtro-categoria">Categoría:</label>
+            <select id="filtro-categoria">
+                <option value="default">Todas</option>
+            </select>
+
+            <label for="filtro-marca">Marca:</label>
+            <select id="filtro-marca">
+                <option value="default">Todas</option>
+            </select>
+
+            <label for="filtro-precio">Ordenar por precio:</label>
+            <select id="filtro-precio">
+                <option value="default">Sin ordenar</option>
+                <option value="asc">Menor a mayor</option>
+                <option value="desc">Mayor a menor</option>
+            </select>
+        </div>
+
+        <div class="error-conexion" hidden>
+             No se pudieron cargar los productos. Intenta recargar la página.
+        </div>
+
+        <div id="product-list"></div>
+    </div>
+
+    <script src="scripts.js"></script>
+</body>
+</html>

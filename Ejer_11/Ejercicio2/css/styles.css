@@ -1,0 +1,33 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 30px;
+}
+
+#seccion-comentarios {
+  max-width: 600px;
+  margin: auto;
+}
+
+form {
+  margin-bottom: 20px;
+}
+
+input,
+textarea,
+button {
+  width: 100%;
+  padding: 8px;
+  margin-top: 10px;
+  box-sizing: border-box;
+}
+
+li {
+  margin-bottom: 10px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #ccc;
+}
+
+small, .error-autor, .error-msj, .error-conexion {
+  color: red;
+  font-size: 0.9em;
+}

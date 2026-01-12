@@ -1,0 +1,12 @@
+[
+  {
+      "author": "Ana",
+      "commentText": "Este es el primer comentario.",
+      "timestamp": "2024-01-01T10:00:00Z"
+  },
+  {
+      "author": "Luis",
+      "commentText": "Muy interesante el ejercicio.",
+      "timestamp": "2024-01-01T11:30:00Z"
+  }
+]
