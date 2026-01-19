@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "nombre": "Carlos Santana",
+    "email": "carlos.santana@example.com",
+    "fechaRegistro": "2023-01-15"
+  },
+  {
+    "id": 2,
+    "nombre": "Ana López",
+    "email": "ana.lopez@example.com",
+    "fechaRegistro": "2023-02-20"
+  },
+  {
+    "id": 3,
+    "nombre": "Pedro Martínez",
+    "email": "pedro.martinez@example.com",
+    "fechaRegistro": "2023-03-10"
+  },
+  {
+    "id": 4,
+    "nombre": "Laura Fernández",
+    "email": "laura.fernandez@example.com",
+    "fechaRegistro": "2023-04-05"
+  },
+  {
+    "id": 5,
+    "nombre": "Miguel Torres",
+    "email": "miguel.torres@example.com",
+    "fechaRegistro": "2023-05-12"
+  },
+  {
+    "id": 6,
+    "nombre": "Sofía Ramírez",
+    "email": "sofia.ramirez@example.com",
+    "fechaRegistro": "2023-06-03"
+  },
+  {
+    "id": 7,
+    "nombre": "Javier Gómez",
+    "email": "javier.gomez@example.com",
+    "fechaRegistro": "2023-06-25"
+  },
+  {
+    "id": 8,
+    "nombre": "María Hernández",
+    "email": "maria.hernandez@example.com",
+    "fechaRegistro": "2023-07-14"
+  },
+  {
+    "id": 9,
+    "nombre": "Luis Castillo",
+    "email": "luis.castillo@example.com",
+    "fechaRegistro": "2023-08-01"
+  },
+  {
+    "id": 10,
+    "nombre": "Elena Morales",
+    "email": "elena.morales@example.com",
+    "fechaRegistro": "2023-08-18"
+  }
+]

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usuario y Pedidos</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+    <form id="formulario">
+
+        <label>Producto<input type="text" id="nombre" name="nombre" required></label>
+
+        <label>SKU<input type="text" id="sku" name="sku" minlength="5" required></label>
+
+        <label>Precio<input type="number" id="precio" name="precio" min="1" required></label>
+
+        <label>Stock<input type="number" id="stock" name="stock" min="0" required></label>
+
+        <label>Categoría<input type="text" id="categoria" name="categoria" required></label>
+
+        <button type="submit" id="guardar" disabled>Guardar</button>
+
+    </form>
+    <div id="mensaje"></div>
+
+    <script src="scripts/ejercicio3.js" type="module"></script>
+</body>
+
+</html>
