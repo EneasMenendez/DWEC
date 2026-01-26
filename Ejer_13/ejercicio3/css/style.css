@@ -1,0 +1,213 @@
+body {
+    background: #f1f1f1;
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    padding: 40px;
+    font-family: Arial, sans-serif;
+}
+
+#formulario,
+#listaUsuarios {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+input {
+    padding: 10px;
+    border: 1px solid #bdbdbd;
+    border-radius: 6px;
+    margin-top: 5px;
+}
+
+#botonGuardar {
+    margin-top: 20px;
+    background: #0d6efd;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#botonGuardar:hover {
+    background: #0b5ed7;
+}
+
+#botonCargar {
+    padding: 10px 18px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
+    background: #29A846;
+}
+
+#botonCargar:disabled {
+    background: #8ab8a2;
+}
+
+table {
+    width: 100%;
+}
+
+tr {
+    display: flex;
+    align-items: center;
+    background: #ffffff;
+    margin-bottom: 12px;
+    padding: 12px;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+td {
+    display: flex;
+    flex-direction: column;
+    margin-right: 15px;
+}
+
+img {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+}
+
+p {
+    margin: 2px 0;
+    font-size: 14px;
+}
+
+.nombre {
+    font-weight: bold;
+}
+
+.tituloCalificaciones {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.Calificaciones,
+.Editar,
+.Eliminar {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 3px 0;
+}
+
+.Calificaciones {
+    background: #17a2b8;
+    color: white;
+}
+
+.Editar {
+    background: orange;
+    color: white;
+}
+
+.Eliminar {
+    background: red;
+    color: white;
+}
+
+#mensajes {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+    font-size: 16px;
+    font-weight: bold;
+    min-width: 280px;
+    text-align: center;
+    z-index: 9999;
+    display: none;
+}
+
+.mensajeBien {
+    color: green;
+}
+
+.mensajeError {
+    color: red;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 10;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+  background: white;
+  padding: 20px;
+  margin: 8% auto;
+  width: 350px;
+  border-radius: 8px;
+}
+
+.cerrar {
+  float: right;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+#calificaciones{
+    display: flex;
+    flex-direction: column;
+
+}
+#botonesCalidicaciones{
+    margin-top: 5px;
+    justify-content: space-between;
+    width: 100%;
+    display: flex;
+    margin:10px;
+  
+}
+
+#guardarCalificaciones{
+    padding: 2%;
+    background-color: #0b5ed7;
+    color: white;
+    border: none;
+}
+
+#borrarCalificaciones{
+    padding: 2%;
+    background-color: grey;
+    color: white;
+    border: none;
+}
