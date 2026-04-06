@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Editor de Imágenes</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+
+    <h1>Editor de Imágenes</h1>
+
+    <div id="zona-arrastre">Arrastra y suelta tus imágenes aquí</div>
+    <input type="file" id="archivo" multiple style="display:none">
+
+    <div id="previsualizacion"></div>
+
+    <h2>Opciones de Edición</h2>
+    <form id="opciones-edicion">
+        <label for="marca-agua">Marca de agua:</label>
+        <input type="text" id="marca-agua" placeholder="© Mi App"><br><br>
+
+        <label for="ancho-maximo">Ancho máximo (px):</label>
+        <input type="number" id="ancho-maximo" placeholder="Ej. 500"><br><br>
+
+        <label for="formato-salida">Formato de salida:</label>
+        <select id="formato-salida">
+            <option value="png">PNG</option>
+            <option value="jpeg">JPEG</option>
+        </select><br><br>
+
+        <button type="submit" id="procesar">Procesar Imágenes</button>
+    </form>
+
+    <h2>Descargar Resultados</h2>
+    <div id="descargas"></div>
+
+    <script src="./scripts/ejercicio1.js"></script>
+</body>
+
+</html>

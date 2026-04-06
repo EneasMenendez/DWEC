@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Kanban Drag & Drop</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+
+    <h1>Tablero Kanban</h1>
+
+    <div class="tablero">
+        <div class="columna" data-status="Pendiente">
+            <h2>Pendiente</h2>
+            <div class="tarjeta" draggable="true" data-id="task-1">Tarea 1</div>
+            <div class="tarjeta" draggable="true" data-id="task-2">Tarea 2</div>
+        </div>
+
+        <div class="columna" data-status="En progreso">
+            <h2>En progreso</h2>
+            <div class="tarjeta" draggable="true" data-id="task-3">Tarea 3</div>
+        </div>
+
+        <div class="columna" data-status="Hecho">
+            <h2>Hecho</h2>
+            <div class="tarjeta" draggable="true" data-id="task-4">Tarea 4</div>
+        </div>
+    </div>
+
+    <script src="./scripts/ejercicio2.js"></script>
+</body>
+
+</html>

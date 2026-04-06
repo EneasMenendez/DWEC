@@ -1,0 +1,104 @@
+/* Zona de arrastre */
+#zona-arrastre {
+    border: 2px dashed #4a90e2;       /* Borde azul moderno */
+    background-color: #f9f9f9;        /* Fondo suave */
+    padding: 50px;
+    text-align: center;
+    margin-bottom: 20px;
+    cursor: pointer;
+    border-radius: 10px;              /* Bordes redondeados */
+    transition: background-color 0.3s, border-color 0.3s, box-shadow 0.3s;
+    font-family: Arial, sans-serif;
+    color: #333;
+    font-size: 18px;
+}
+
+/* Efecto al arrastrar archivos */
+#zona-arrastre.arrastrando {
+    background-color: #e6f0ff;        /* Fondo azul claro */
+    border-color: #357ab7;            /* Borde más oscuro */
+    box-shadow: 0 0 15px rgba(53, 122, 183, 0.3); /* Sombra suave */
+}
+
+/* Previsualización de las imágenes */
+#previsualizacion {
+    display: flex;
+    flex-wrap: wrap;                  /* Permite varias filas */
+    gap: 10px;                        /* Separación entre miniaturas */
+    margin-bottom: 20px;
+}
+
+/* Miniaturas de imágenes */
+#previsualizacion .imagenMiniatura {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 8px;               /* Bordes suaves */
+    border: 2px solid #ddd;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+/* Efecto hover sobre miniaturas */
+#previsualizacion .imagenMiniatura:hover {
+    transform: scale(1.05);           /* Aumenta ligeramente */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2); /* Sombra suave */
+}
+
+/* Botones */
+button {
+    padding: 12px 25px;
+    background-color: #4a90e2;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+/* Hover de botones */
+button:hover {
+    background-color: #357ab7;
+    transform: scale(1.05);
+}
+
+/* Enlaces de descarga */
+#descargas a {
+    display: inline-block;
+    margin: 5px 10px 5px 0;
+    padding: 8px 15px;
+    background-color: #f0f4f8;
+    color: #4a90e2;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Hover de enlaces de descarga */
+#descargas a:hover {
+    background-color: #4a90e2;
+    color: white;
+}
+
+/* Formulario de opciones */
+#opciones-edicion {
+    background-color: #f7f9fc;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #e0e6ed;
+    margin-bottom: 20px;
+}
+
+#opciones-edicion label {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+#opciones-edicion input, 
+#opciones-edicion select {
+    padding: 8px;
+    margin-bottom: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    width: 200px;
+}

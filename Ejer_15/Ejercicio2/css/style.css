@@ -1,0 +1,53 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f7f9fc;
+    margin: 20px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.tablero {
+    display: flex;
+    gap: 20px;
+}
+
+.columna {
+    flex: 1;
+    background-color: #e0e6ed;
+    padding: 10px;
+    border-radius: 10px;
+    min-height: 300px;
+    transition: background-color 0.3s;
+}
+
+.columna.resaltada {
+    background-color: #d0e6ff;
+}
+
+.columna h2 {
+    text-align: center;
+}
+
+.tarjeta {
+    background-color: #fff;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 6px;
+    cursor: grab;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+.tarjeta.arrastrando {
+    opacity: 0.5;  
+}
+
+.linea-insercion {
+    height: 4px;
+    background-color: #4a90e2;
+    margin: 5px 0;
+    border-radius: 2px;
+}
