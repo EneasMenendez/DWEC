@@ -1,0 +1,81 @@
+body {
+    background-color: #f8fafc;
+    text-align: center;
+}
+
+h1 {
+    color: #2765e9;
+    margin-bottom: 40px;
+}
+
+#contenedorPadre {
+    display: grid;
+    grid-template-columns:auto auto auto;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+#tarjeta {
+    background-color: white;
+    padding: 5%;
+    border-radius: 8%;
+    border: 2px solid #e5e7eb;
+    border-top: 5px solid #2a62ea;
+    text-align: left;
+}
+
+p {
+    color: #8d9393;
+    font-size:1.2rem;
+    margin: 3% 0;
+}
+
+#diasRestantes {
+    margin: 5% 0;
+    padding: 1%;
+    background-color: #f1f5f9;
+    border-radius: 6%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+
+#activo {
+    color: #3b7f3f;
+}
+
+#inactivo {
+    color: #d42211;
+    font-weight: 600;
+}
+
+.divPosponer {
+    display: flex;
+    gap: 12px;
+    margin-top: 2%;
+    background-color: white;
+}
+
+input {
+    padding: 1%;
+    padding-right: 10%;
+    border-radius: 8px;
+    border: 1px solid #cbd5f5;
+    font-size: 1rem;
+}
+
+button {
+    padding: 4%;
+    margin-left: 4%;
+    background-color: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 10%;
+    font-size: 1rem;
+}
+
+button:hover {
+    background-color: #1d4ed8;
+}
