@@ -1,0 +1,19 @@
+{
+  "name": "nombre-de-tu-proyecto",
+  "version": "1.0.0",
+  "type": "module",
+  "dependencies": {
+    "express": "^4.18.2",
+    "morgan": "^1.10.0"
+  },
+  "description": "<div>\r      <h2>Ejercicio 17</h2>\r   <a href=\"https://dwec-ejercicio17.vercel.app/\">Enlace Ejercicio 17</a>",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
