@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ejercicio 21</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+<header>
+  <h1>Sistema de Usuarios</h1>
+</header>
+
+<main>
+
+  <div class="card">
+    <div class="card-header">Registro de Alumnos</div>
+    <div class="card-body">
+      <div class="form-grid">
+        <div class="form-group">
+          <label for="nombre">Nombre</label>
+          <input type="text" id="nombre" placeholder="Introduce el nombre" />
+        </div>
+        <div class="form-group">
+          <label for="apellidos">Apellidos</label>
+          <input type="text" id="apellidos" placeholder="Introduce los apellidos" />
+        </div>
+        <div class="form-group">
+          <label for="localidad">Localidad</label>
+          <input type="text" id="localidad" placeholder="Introduce la localidad" />
+        </div>
+        <div class="form-group">
+          <label>Imagen</label>
+          <label class="file-label" for="imagenInput">
+            <span>📎</span>
+            <span id="fileName">Elegir archivo…</span>
+          </label>
+          <input type="file" id="imagenInput" accept="image/*" />
+        </div>
+      </div>
+      <button class="btn-primary" id="btnAgregar">Agregar Alumno</button>
+      <div class="msg" id="mensaje"></div>
+    </div>
+  </div>
+
+  <div>
+    <p class="section-title">Fichas de Alumnos</p>
+    <div id="loading" style="display:none">Cargando alumnos…</div>
+    <div class="grid-alumnos" id="gridAlumnos"></div>
+  </div>
+
+</main>
+
+<script src="./app.js"></script>
+</body>
+</html>
