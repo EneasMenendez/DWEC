@@ -1,11 +1,13 @@
 ﻿"use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function Login() {
   const router  = useRouter();
   const [error, setError] = useState("");
   const [cargando, setCargando] = useState(false);
+  const [verPass, setVerPass] = useState(false);
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -51,13 +53,23 @@ export default function Login() {
                     />
                   </div>
                   <div className="mb-3">
-                    <label className="form-label">ContraseÃ±a</label>
-                    <input
-                      name="contrasena"
-                      type="password"
-                      className="form-control"
-                      required
-                    />
+                    <label className="form-label">Contraseña</label>
+                    <div className="input-group">
+                      <input
+                        name="contrasena"
+                        type={verPass ? "text" : "password"}
+                        className="form-control"
+                        required
+                      />
+                      <button
+                        type="button"
+                        className="btn btn-outline-secondary"
+                        onClick={() => setVerPass((v) => !v)}
+                        tabIndex={-1}
+                      >
+                        <i className={`bi ${verPass ? "bi-eye-slash" : "bi-eye"}`} />
+                      </button>
+                    </div>
                   </div>
                   <div className="mb-3 form-check">
                     <input
@@ -73,11 +85,14 @@ export default function Login() {
                   </div>
                   <button
                     type="submit"
-                    className="btn btn-dark w-100"
+                    className="btn btn-dark w-100 mb-2"
                     disabled={cargando}
                   >
                     {cargando ? "Entrando..." : "Entrar"}
                   </button>
+                  <Link href="/" className="btn btn-outline-secondary w-100">
+                    <i className="bi bi-arrow-left me-1" />Volver al inicio
+                  </Link>
                 </form>
               </div>
             </div>

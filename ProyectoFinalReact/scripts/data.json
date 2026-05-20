@@ -1,0 +1,155 @@
+{
+  "categorias": [
+    { "nombre": "Retrato",       "descripcion": "Fotografía de personas, expresiones y emociones humanas.", "slug": "retrato" },
+    { "nombre": "Paisaje",       "descripcion": "Naturaleza, horizontes y espacios naturales.",              "slug": "paisaje" },
+    { "nombre": "Arquitectura",  "descripcion": "Edificios, estructuras y espacios urbanos.",                "slug": "arquitectura" },
+    { "nombre": "Documental",    "descripcion": "Reportaje visual de escenas cotidianas y culturales.",      "slug": "documental" },
+    { "nombre": "Naturaleza",    "descripcion": "Flora, fauna y ecosistemas en su estado natural.",          "slug": "naturaleza" }
+  ],
+
+  "proyectos": [
+    {
+      "titulo": "Miradas Urbanas",
+      "descripcion": "Una colección de retratos capturados en las calles de Madrid. Cada imagen busca revelar la personalidad única de sus protagonistas en el contexto de la ciudad.",
+      "imagen_portada": "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=1200&h=800&fit=crop",
+      "fecha": "2024-03-15",
+      "publicado": true,
+      "categoria_slug": "retrato"
+    },
+    {
+      "titulo": "Horizontes del Norte",
+      "descripcion": "Un viaje fotográfico por las costas del Cantábrico. La luz grisácea y las olas persistentes crean una atmósfera única que solo existe en el norte de España.",
+      "imagen_portada": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&h=800&fit=crop",
+      "fecha": "2024-01-20",
+      "publicado": true,
+      "categoria_slug": "paisaje"
+    },
+    {
+      "titulo": "Geometrías de Acero",
+      "descripcion": "Barcelona desde arriba y desde abajo. La arquitectura modernista y contemporánea ofrece formas, texturas y perspectivas que rara vez percibimos en el día a día.",
+      "imagen_portada": "https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1200&h=800&fit=crop",
+      "fecha": "2023-11-08",
+      "publicado": true,
+      "categoria_slug": "arquitectura"
+    },
+    {
+      "titulo": "El Mercado de las Flores",
+      "descripcion": "Documental fotográfico sobre el mercado de flores de Valencia. Vendedoras, compradores y el ritual diario de quienes trabajan rodeados de color y fragancia.",
+      "imagen_portada": "https://images.unsplash.com/photo-1487530811015-780fe4ccfc04?w=1200&h=800&fit=crop",
+      "fecha": "2023-07-22",
+      "publicado": true,
+      "categoria_slug": "documental"
+    },
+    {
+      "titulo": "Luz entre Pinos",
+      "descripcion": "Las primeras horas de la mañana en el Parque Natural de la Sierra de Guadarrama. La niebla, la luz filtrada y el silencio absoluto componen escenas de belleza irreal.",
+      "imagen_portada": "https://images.unsplash.com/photo-1448375240586-882707db888b?w=1200&h=800&fit=crop",
+      "fecha": "2024-05-10",
+      "publicado": true,
+      "categoria_slug": "naturaleza"
+    },
+    {
+      "titulo": "Retratos de Oficio",
+      "descripcion": "Artesanos, cocineros, músicos callejeros. Personas que dedican su vida a un oficio con pasión. Un homenaje fotográfico al trabajo hecho con las manos.",
+      "imagen_portada": "https://images.unsplash.com/photo-1504703395950-b89145a5425b?w=1200&h=800&fit=crop",
+      "fecha": "2022-09-14",
+      "publicado": true,
+      "categoria_slug": "retrato"
+    },
+    {
+      "titulo": "Costa Brava: Calas Secretas",
+      "descripcion": "Una exploración de calas poco frecuentadas de la Costa Brava catalana. Trabajo en curso con material de la última expedición de primavera.",
+      "imagen_portada": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&h=800&fit=crop",
+      "fecha": "2025-04-03",
+      "publicado": false,
+      "categoria_slug": "paisaje"
+    },
+    {
+      "titulo": "Abandono Industrial",
+      "descripcion": "Fábricas, naves y espacios industriales abandonados en la periferia de Bilbao. La belleza de la ruina y el paso del tiempo. Proyecto en edición final.",
+      "imagen_portada": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&h=800&fit=crop",
+      "fecha": "2022-04-18",
+      "publicado": false,
+      "categoria_slug": "documental"
+    }
+  ],
+
+  "fotos": [
+    { "titulo": "La sonrisa del metro",       "url": "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=800&h=600&fit=crop", "orden": 1, "proyecto": "Miradas Urbanas" },
+    { "titulo": "Vendedor de castañas",       "url": "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?w=800&h=600&fit=crop", "orden": 2, "proyecto": "Miradas Urbanas" },
+    { "titulo": "Ojos que cuentan historias", "url": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=800&h=600&fit=crop", "orden": 3, "proyecto": "Miradas Urbanas" },
+    { "titulo": "La lectora del parque",      "url": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=800&h=600&fit=crop", "orden": 4, "proyecto": "Miradas Urbanas" },
+    { "titulo": "Amanecer en Santander",      "url": "https://images.unsplash.com/photo-1501854140801-50d01698950b?w=800&h=600&fit=crop", "orden": 1, "proyecto": "Horizontes del Norte" },
+    { "titulo": "Marea baja en Zarautz",      "url": "https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=800&h=600&fit=crop", "orden": 2, "proyecto": "Horizontes del Norte" },
+    { "titulo": "Acantilados de Zumaia",      "url": "https://images.unsplash.com/photo-1519046904884-53103b34b206?w=800&h=600&fit=crop", "orden": 3, "proyecto": "Horizontes del Norte" },
+    { "titulo": "Torre Agbar desde abajo",         "url": "https://images.unsplash.com/photo-1523531294919-4bcd7c65e216?w=800&h=600&fit=crop", "orden": 1, "proyecto": "Geometrías de Acero" },
+    { "titulo": "Pasarela del Pabellón Barcelona", "url": "https://images.unsplash.com/photo-1479839672679-a46483c0e7c8?w=800&h=600&fit=crop", "orden": 2, "proyecto": "Geometrías de Acero" },
+    { "titulo": "Fachada ventilada al atardecer",  "url": "https://images.unsplash.com/photo-1481026469463-66327c86e544?w=800&h=600&fit=crop", "orden": 3, "proyecto": "Geometrías de Acero" },
+    { "titulo": "Escaleras de caracol",            "url": "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=800&h=600&fit=crop", "orden": 4, "proyecto": "Geometrías de Acero" },
+    { "titulo": "Manos entre flores",     "url": "https://images.unsplash.com/photo-1487530811015-780fe4ccfc04?w=800&h=600&fit=crop", "orden": 1, "proyecto": "El Mercado de las Flores" },
+    { "titulo": "Rosas del martes",       "url": "https://images.unsplash.com/photo-1490750967868-88df5691cc13?w=800&h=600&fit=crop", "orden": 2, "proyecto": "El Mercado de las Flores" },
+    { "titulo": "La florista de siempre", "url": "https://images.unsplash.com/photo-1453928582365-b6ad33cbcf64?w=800&h=600&fit=crop", "orden": 3, "proyecto": "El Mercado de las Flores" },
+    { "titulo": "Niebla matinal",             "url": "https://images.unsplash.com/photo-1448375240586-882707db888b?w=800&h=600&fit=crop", "orden": 1, "proyecto": "Luz entre Pinos" },
+    { "titulo": "Rayos de sol entre troncos", "url": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800&h=600&fit=crop", "orden": 2, "proyecto": "Luz entre Pinos" },
+    { "titulo": "Musgo y raíces",             "url": "https://images.unsplash.com/photo-1425913397330-cf8af2ff40a1?w=800&h=600&fit=crop", "orden": 3, "proyecto": "Luz entre Pinos" },
+    { "titulo": "Lago al amanecer",           "url": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop", "orden": 4, "proyecto": "Luz entre Pinos" },
+    { "titulo": "El espadero de Toledo", "url": "https://images.unsplash.com/photo-1504703395950-b89145a5425b?w=800&h=600&fit=crop", "orden": 1, "proyecto": "Retratos de Oficio" },
+    { "titulo": "Panadero a las 5 am",   "url": "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=800&h=600&fit=crop", "orden": 2, "proyecto": "Retratos de Oficio" },
+    { "titulo": "Músico del metro",      "url": "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=800&h=600&fit=crop", "orden": 3, "proyecto": "Retratos de Oficio" },
+    { "titulo": "Cala Figuera al mediodía", "url": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&h=600&fit=crop", "orden": 1, "proyecto": "Costa Brava: Calas Secretas" },
+    { "titulo": "Agua transparente",        "url": "https://images.unsplash.com/photo-1471922694854-ff1b63b20054?w=800&h=600&fit=crop", "orden": 2, "proyecto": "Costa Brava: Calas Secretas" },
+    { "titulo": "Nave B, zona 3",           "url": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=600&fit=crop", "orden": 1, "proyecto": "Abandono Industrial" },
+    { "titulo": "Maquinaria olvidada",      "url": "https://images.unsplash.com/photo-1565608438257-0fd84c6aa4a1?w=800&h=600&fit=crop", "orden": 2, "proyecto": "Abandono Industrial" },
+    { "titulo": "Ventana rota al exterior", "url": "https://images.unsplash.com/photo-1558980664-2cd663cf8f37?w=800&h=600&fit=crop", "orden": 3, "proyecto": "Abandono Industrial" }
+  ],
+
+  "etiquetas": [
+    { "nombre": "urbano",      "slug": "urbano" },
+    { "nombre": "natural",     "slug": "natural" },
+    { "nombre": "luz",         "slug": "luz" },
+    { "nombre": "sombra",      "slug": "sombra" },
+    { "nombre": "colorido",    "slug": "colorido" },
+    { "nombre": "minimalismo", "slug": "minimalismo" },
+    { "nombre": "textura",     "slug": "textura" },
+    { "nombre": "nocturno",    "slug": "nocturno" }
+  ],
+
+  "foto_etiquetas": [
+    { "foto": "La sonrisa del metro",      "etiquetas": ["urbano", "luz"] },
+    { "foto": "Vendedor de castañas",      "etiquetas": ["urbano", "colorido"] },
+    { "foto": "Amanecer en Santander",     "etiquetas": ["natural", "luz"] },
+    { "foto": "Acantilados de Zumaia",     "etiquetas": ["natural", "textura"] },
+    { "foto": "Torre Agbar desde abajo",   "etiquetas": ["minimalismo", "textura"] },
+    { "foto": "Escaleras de caracol",      "etiquetas": ["minimalismo", "sombra"] },
+    { "foto": "Niebla matinal",            "etiquetas": ["natural", "luz"] },
+    { "foto": "Rayos de sol entre troncos","etiquetas": ["natural", "luz"] },
+    { "foto": "Nave B, zona 3",            "etiquetas": ["sombra", "textura"] }
+  ],
+
+  "usuarios": [
+    { "nombre": "Administrador",  "email": "admin@portfolio.com",  "contrasena": "admin1234",  "rol": "ADMIN"  },
+    { "nombre": "Elena Martínez", "email": "elena@portfolio.com",  "contrasena": "editor1234", "rol": "EDITOR" },
+    { "nombre": "Carlos Vega",    "email": "carlos@portfolio.com", "contrasena": "carlos1234", "rol": "EDITOR" }
+  ],
+
+  "mensajes": [
+    {
+      "nombre": "Laura García", "email": "laura.garcia@email.com",
+      "asunto": "Sesión de fotos para boda",
+      "mensaje": "Hola! Me encanta tu trabajo, especialmente la serie de retratos urbanos. Estoy organizando mi boda para octubre y me gustaría saber si tienes disponibilidad y cuáles son tus tarifas para una sesión de 8 horas.",
+      "estado": "respondido"
+    },
+    {
+      "nombre": "Carlos Mendoza", "email": "c.mendoza@empresa.es",
+      "asunto": "Fotografía corporativa",
+      "mensaje": "Buenos días. Trabajo en una consultora de 40 personas y necesitamos renovar las fotos corporativas del equipo directivo. Podrías enviarnos un presupuesto para sesión en estudio y otra en nuestras oficinas?",
+      "estado": "leido"
+    },
+    {
+      "nombre": "Sofía Reyes", "email": "sofia.reyes@gmail.com",
+      "asunto": "Proyecto naturaleza",
+      "mensaje": "Vi tu serie Luz entre Pinos y me quedé sin palabras. Soy bióloga y estoy coordinando una exposición sobre ecosistemas amenazados. ¿Estarías interesado en colaborar cediendo algunas imágenes o creando material nuevo?",
+      "estado": "nuevo"
+    }
+  ]
+}

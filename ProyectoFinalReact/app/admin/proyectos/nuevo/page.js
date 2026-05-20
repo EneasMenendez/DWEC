@@ -4,12 +4,14 @@ import { useRouter } from "next/navigation";
 import NavBar from "@/components/NavBar";
 import Contenedor from "@/components/Contenedor";
 import Link from "next/link";
+import { useUnsavedChanges } from "@/hooks/useUnsavedChanges";
 
 export default function NuevoProyecto() {
   const router = useRouter();
   const [categorias, setCategorias] = useState([]);
   const [error, setError] = useState("");
   const [guardando, setGuardando] = useState(false);
+  const { markDirty, clearDirty } = useUnsavedChanges();
 
   useEffect(() => {
     fetch("/api/categorias").then((r) => r.json()).then(setCategorias);
@@ -31,6 +33,7 @@ export default function NuevoProyecto() {
       });
       const json = await res.json();
       if (!res.ok) throw new Error(json.error || "Error al guardar");
+      clearDirty();
       router.push("/admin/proyectos");
     } catch (err) {
       setError(err.message);
@@ -51,7 +54,7 @@ export default function NuevoProyecto() {
         {error && <div className="alert alert-danger">{error}</div>}
 
         <div className="card p-4 shadow-sm">
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit} onChange={markDirty}>
             <div className="mb-3">
               <label className="form-label fw-semibold">Título *</label>
               <input name="titulo" type="text" className="form-control" required />

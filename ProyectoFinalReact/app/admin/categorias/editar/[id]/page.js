@@ -6,7 +6,7 @@ import Contenedor from "@/components/Contenedor";
 import Link from "next/link";
 import { useUnsavedChanges } from "@/hooks/useUnsavedChanges";
 
-export default function EditarUsuario({ params }) {
+export default function EditarCategoria({ params }) {
   const { id } = use(params);
   const router = useRouter();
   const [datos, setDatos] = useState(null);
@@ -15,7 +15,7 @@ export default function EditarUsuario({ params }) {
   const { markDirty, clearDirty } = useUnsavedChanges();
 
   useEffect(() => {
-    fetch(`/api/usuarios/${id}`)
+    fetch(`/api/categorias/${id}`)
       .then((r) => r.json())
       .then(setDatos);
   }, [id]);
@@ -25,10 +25,9 @@ export default function EditarUsuario({ params }) {
     setGuardando(true);
     setError("");
     const form = Object.fromEntries(new FormData(e.target));
-    if (!form.contrasena) delete form.contrasena;
 
     try {
-      const res = await fetch(`/api/usuarios/${id}`, {
+      const res = await fetch(`/api/categorias/${id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
@@ -36,7 +35,7 @@ export default function EditarUsuario({ params }) {
       const json = await res.json();
       if (!res.ok) throw new Error(json.error || "Error al guardar");
       clearDirty();
-      router.push("/admin/usuarios");
+      router.push("/admin/categorias");
     } catch (err) {
       setError(err.message);
     } finally {
@@ -56,8 +55,8 @@ export default function EditarUsuario({ params }) {
       <NavBar admin />
       <Contenedor>
         <div className="d-flex align-items-center gap-3 my-4">
-          <Link href="/admin/usuarios" className="btn btn-outline-secondary btn-sm">← Volver</Link>
-          <h1 className="mb-0">Editar Usuario #{id}</h1>
+          <Link href="/admin/categorias" className="btn btn-outline-secondary btn-sm">← Volver</Link>
+          <h1 className="mb-0">Editar Categoría #{id}</h1>
         </div>
 
         {error && <div className="alert alert-danger">{error}</div>}
@@ -69,26 +68,19 @@ export default function EditarUsuario({ params }) {
               <input name="nombre" type="text" className="form-control" defaultValue={datos.nombre} required />
             </div>
             <div className="mb-3">
-              <label className="form-label fw-semibold">Email *</label>
-              <input name="email" type="email" className="form-control" defaultValue={datos.email} required />
-            </div>
-            <div className="mb-3">
-              <label className="form-label fw-semibold">Nueva contraseña</label>
-              <input name="contrasena" type="password" className="form-control" minLength={8}
-                placeholder="Dejar vacío para no cambiar" />
+              <label className="form-label fw-semibold">Slug</label>
+              <input name="slug" type="text" className="form-control" defaultValue={datos.slug} />
+              <div className="form-text">Dejar vacío para regenerar a partir del nombre.</div>
             </div>
             <div className="mb-4">
-              <label className="form-label fw-semibold">Rol</label>
-              <select name="rol" className="form-select" defaultValue={datos.rol}>
-                <option value="EDITOR">Editor</option>
-                <option value="ADMIN">Administrador</option>
-              </select>
+              <label className="form-label fw-semibold">Descripción</label>
+              <textarea name="descripcion" className="form-control" rows={3} defaultValue={datos.descripcion || ""} />
             </div>
             <div className="d-flex gap-2">
               <button type="submit" className="btn btn-dark" disabled={guardando}>
                 {guardando ? "Guardando…" : "Guardar cambios"}
               </button>
-              <Link href="/admin/usuarios" className="btn btn-outline-secondary">Cancelar</Link>
+              <Link href="/admin/categorias" className="btn btn-outline-secondary">Cancelar</Link>
             </div>
           </form>
         </div>

@@ -25,6 +25,14 @@ export async function POST(request) {
 
   try {
     const body = await request.json();
+
+    if (!body.nombre || body.nombre.trim().length < 2)
+      return NextResponse.json({ error: 'El nombre debe tener al menos 2 caracteres.' }, { status: 400 });
+    if (!body.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(body.email))
+      return NextResponse.json({ error: 'Email no válido.' }, { status: 400 });
+    if (!body.contrasena || body.contrasena.length < 8)
+      return NextResponse.json({ error: 'La contraseña debe tener al menos 8 caracteres.' }, { status: 400 });
+
     const contrasena = await hashPassword(body.contrasena);
     const usuario = await Usuario.create({
       nombre: body.nombre,

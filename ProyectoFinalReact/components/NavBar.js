@@ -1,10 +1,19 @@
 "use client";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
+import { useState, useEffect } from "react";
 
 export default function NavBar({ admin = false, onLogout }) {
   const ruta = usePathname();
   const router = useRouter();
+  const [esAdmin, setEsAdmin] = useState(true);
+
+  useEffect(() => {
+    if (!admin) return;
+    fetch("/api/me")
+      .then((r) => r.ok ? r.json() : null)
+      .then((data) => { if (data) setEsAdmin(data.rol === "ADMIN"); });
+  }, [admin]);
 
   function esActiva(href) {
     return ruta === href ? "active" : "";
@@ -22,8 +31,9 @@ export default function NavBar({ admin = false, onLogout }) {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="container">
-        <Link href="/" className="navbar-brand">
-          <i className="bi bi-camera-fill me-2" />LENS &amp; LIGHT
+        <Link href="/" className="navbar-brand d-flex align-items-center gap-2">
+          <img src="/logo.svg" alt="Logo" width={32} height={32} />
+          Portfolio Eneas Menéndez
         </Link>
 
         <button
@@ -31,11 +41,12 @@ export default function NavBar({ admin = false, onLogout }) {
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navMenu"
+          suppressHydrationWarning
         >
           <span className="navbar-toggler-icon" />
         </button>
 
-        <div className="collapse navbar-collapse" id="navMenu">
+        <div className="collapse navbar-collapse" id="navMenu" suppressHydrationWarning>
           {!admin ? (
             <ul className="navbar-nav me-auto">
               <li className="nav-item">
@@ -44,6 +55,11 @@ export default function NavBar({ admin = false, onLogout }) {
               <li className="nav-item">
                 <Link href="/proyectos" className={`nav-link ${esActiva("/proyectos")}`}>
                   Proyectos
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link href="/sobre-mi" className={`nav-link ${esActiva("/sobre-mi")}`}>
+                  Sobre mí
                 </Link>
               </li>
               <li className="nav-item">
@@ -66,6 +82,8 @@ export default function NavBar({ admin = false, onLogout }) {
                 <ul className="dropdown-menu">
                   <li><Link href="/admin/proyectos" className="dropdown-item">Proyectos</Link></li>
                   <li><Link href="/admin/fotos" className="dropdown-item">Fotos</Link></li>
+                  <li><hr className="dropdown-divider" /></li>
+                  <li><Link href="/admin/categorias" className="dropdown-item">Categorías</Link></li>
                 </ul>
               </li>
               <li className="nav-item">
@@ -73,11 +91,13 @@ export default function NavBar({ admin = false, onLogout }) {
                   Mensajes
                 </Link>
               </li>
-              <li className="nav-item">
-                <Link href="/admin/usuarios" className={`nav-link ${esActiva("/admin/usuarios")}`}>
-                  Usuarios
-                </Link>
-              </li>
+              {esAdmin && (
+                <li className="nav-item">
+                  <Link href="/admin/usuarios" className={`nav-link ${esActiva("/admin/usuarios")}`}>
+                    Usuarios
+                  </Link>
+                </li>
+              )}
             </ul>
           )}
 

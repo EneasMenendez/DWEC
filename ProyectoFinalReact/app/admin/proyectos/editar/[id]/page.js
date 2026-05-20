@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import NavBar from "@/components/NavBar";
 import Contenedor from "@/components/Contenedor";
 import Link from "next/link";
+import { useUnsavedChanges } from "@/hooks/useUnsavedChanges";
 
 export default function EditarProyecto({ params }) {
   const { id } = use(params);
@@ -12,6 +13,7 @@ export default function EditarProyecto({ params }) {
   const [categorias, setCategorias] = useState([]);
   const [error, setError] = useState("");
   const [guardando, setGuardando] = useState(false);
+  const { markDirty, clearDirty } = useUnsavedChanges();
 
   useEffect(() => {
     Promise.all([
@@ -39,6 +41,7 @@ export default function EditarProyecto({ params }) {
       });
       const json = await res.json();
       if (!res.ok) throw new Error(json.error || "Error al guardar");
+      clearDirty();
       router.push("/admin/proyectos");
     } catch (err) {
       setError(err.message);
@@ -66,7 +69,7 @@ export default function EditarProyecto({ params }) {
         {error && <div className="alert alert-danger">{error}</div>}
 
         <div className="card p-4 shadow-sm">
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit} onChange={markDirty}>
             <div className="mb-3">
               <label className="form-label fw-semibold">Título *</label>
               <input name="titulo" type="text" className="form-control" defaultValue={datos.titulo} required />
@@ -92,17 +95,12 @@ export default function EditarProyecto({ params }) {
             </div>
             <div className="mb-3">
               <label className="form-label fw-semibold">Imagen de portada (URL)</label>
-              <input name="imagen_portada" type="url" className="form-control" defaultValue={datos.imagen_portada || ""} placeholder="https://..." />
+              <input name="imagen_portada" type="url" className="form-control"
+                defaultValue={datos.imagen_portada || ""} placeholder="https://..." />
             </div>
             <div className="mb-4 form-check">
-              <input
-                name="publicado"
-                type="checkbox"
-                className="form-check-input"
-                id="publicado"
-                value="1"
-                defaultChecked={!!datos.publicado}
-              />
+              <input name="publicado" type="checkbox" className="form-check-input" id="publicado"
+                value="1" defaultChecked={!!datos.publicado} />
               <label className="form-check-label" htmlFor="publicado">Publicado</label>
             </div>
             <div className="d-flex gap-2">

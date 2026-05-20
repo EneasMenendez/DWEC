@@ -7,7 +7,7 @@ import Link from "next/link";
 
 export default function Dashboard() {
   const router = useRouter();
-  const [contadores, setContadores] = useState({ proyectos: 0, fotos: 0, mensajes: 0 });
+  const [datos, setDatos] = useState({ proyectos: 0, fotos: 0, mensajes: 0, usuario: null });
   const [cargando, setCargando] = useState(true);
 
   useEffect(() => {
@@ -16,7 +16,7 @@ export default function Dashboard() {
         if (r.status === 401) { router.push("/login"); return null; }
         return r.json();
       })
-      .then((data) => { if (data) setContadores(data); })
+      .then((data) => { if (data) setDatos(data); })
       .finally(() => setCargando(false));
   }, [router]);
 
@@ -29,7 +29,17 @@ export default function Dashboard() {
     <>
       <NavBar admin onLogout={handleLogout} />
       <Contenedor>
-        <h1 className="my-4">Dashboard</h1>
+        <div className="d-flex justify-content-between align-items-center my-4">
+          <h1>Dashboard</h1>
+          {datos.usuario && (
+            <div className="text-end">
+              <span className="fw-semibold">{datos.usuario.nombre}</span>
+              <span className={`badge ms-2 ${datos.usuario.rol === "ADMIN" ? "bg-danger" : "bg-primary"}`}>
+                {datos.usuario.rol}
+              </span>
+            </div>
+          )}
+        </div>
 
         <div className="row g-4 mb-5">
           <div className="col-md-4">
@@ -37,7 +47,7 @@ export default function Dashboard() {
               <div className="card-body text-center py-4">
                 <i className="bi bi-images" style={{ fontSize: "2.5rem" }} />
                 <h2 className="display-4 fw-bold mt-2">
-                  {cargando ? "…" : contadores.proyectos}
+                  {cargando ? "…" : datos.proyectos}
                 </h2>
                 <p className="mb-0">Proyectos</p>
               </div>
@@ -52,7 +62,7 @@ export default function Dashboard() {
               <div className="card-body text-center py-4">
                 <i className="bi bi-camera" style={{ fontSize: "2.5rem" }} />
                 <h2 className="display-4 fw-bold mt-2">
-                  {cargando ? "…" : contadores.fotos}
+                  {cargando ? "…" : datos.fotos}
                 </h2>
                 <p className="mb-0">Fotos</p>
               </div>
@@ -67,7 +77,7 @@ export default function Dashboard() {
               <div className="card-body text-center py-4">
                 <i className="bi bi-envelope" style={{ fontSize: "2.5rem" }} />
                 <h2 className="display-4 fw-bold mt-2">
-                  {cargando ? "…" : contadores.mensajes}
+                  {cargando ? "…" : datos.mensajes}
                 </h2>
                 <p className="mb-0">Mensajes nuevos</p>
               </div>
@@ -86,8 +96,13 @@ export default function Dashboard() {
           <Link href="/admin/fotos/nuevo" className="list-group-item list-group-item-action">
             <i className="bi bi-upload me-2" />Subir foto
           </Link>
-          <Link href="/admin/usuarios" className="list-group-item list-group-item-action">
-            <i className="bi bi-people me-2" />Gestionar usuarios
+          {datos.usuario?.rol === "ADMIN" && (
+            <Link href="/admin/usuarios" className="list-group-item list-group-item-action">
+              <i className="bi bi-people me-2" />Gestionar usuarios
+            </Link>
+          )}
+          <Link href="/admin/categorias" className="list-group-item list-group-item-action">
+            <i className="bi bi-tags me-2" />Gestionar categorías
           </Link>
         </div>
       </Contenedor>

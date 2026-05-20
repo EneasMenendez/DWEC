@@ -33,7 +33,7 @@ export default function Contacto() {
 
             {enviado && (
               <div className="alert alert-success">
-                Â¡Mensaje enviado correctamente! Me pondrÃ© en contacto contigo pronto.
+                ¡Mensaje enviado correctamente! Me pondré en contacto contigo pronto.
               </div>
             )}
             {error && <div className="alert alert-danger">{error}</div>}
@@ -67,7 +67,7 @@ export default function Contacto() {
                     name="asunto"
                     type="text"
                     className="form-control"
-                    placeholder="Â¿En quÃ© puedo ayudarte?"
+                    placeholder="¿En qué puedo ayudarte?"
                   />
                 </div>
                 <div className="mb-3">
@@ -78,7 +78,7 @@ export default function Contacto() {
                     rows={5}
                     required
                     minLength={10}
-                    placeholder="Escribe tu mensaje aquÃ­..."
+                    placeholder="Escribe tu mensaje aquí..."
                   />
                 </div>
                 <button type="submit" className="btn btn-dark w-100">

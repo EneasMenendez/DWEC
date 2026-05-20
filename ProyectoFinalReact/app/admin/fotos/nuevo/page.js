@@ -4,12 +4,14 @@ import { useRouter } from "next/navigation";
 import NavBar from "@/components/NavBar";
 import Contenedor from "@/components/Contenedor";
 import Link from "next/link";
+import { useUnsavedChanges } from "@/hooks/useUnsavedChanges";
 
 export default function NuevaFoto() {
   const router = useRouter();
   const [proyectos, setProyectos] = useState([]);
   const [error, setError] = useState("");
   const [guardando, setGuardando] = useState(false);
+  const { markDirty, clearDirty } = useUnsavedChanges();
 
   useEffect(() => {
     fetch("/api/proyectos?all=1").then((r) => r.json()).then(setProyectos);
@@ -31,6 +33,7 @@ export default function NuevaFoto() {
       });
       const json = await res.json();
       if (!res.ok) throw new Error(json.error || "Error al guardar");
+      clearDirty();
       router.push("/admin/fotos");
     } catch (err) {
       setError(err.message);
@@ -51,7 +54,7 @@ export default function NuevaFoto() {
         {error && <div className="alert alert-danger">{error}</div>}
 
         <div className="card p-4 shadow-sm">
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit} onChange={markDirty}>
             <div className="mb-3">
               <label className="form-label fw-semibold">URL de la imagen *</label>
               <input name="url" type="url" className="form-control" required placeholder="https://..." />
