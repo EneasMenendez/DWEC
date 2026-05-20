@@ -1,0 +1,22 @@
+﻿/* Estilos globales del portfolio - complementa Bootstrap */
+body {
+  background-color: #f8f9fa;
+}
+
+.navbar-brand {
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.foto-card img {
+  object-fit: cover;
+  height: 220px;
+  width: 100%;
+}
+
+.hero-section {
+  min-height: 60vh;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  display: flex;
+  align-items: center;
+}

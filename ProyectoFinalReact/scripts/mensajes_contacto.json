@@ -1,0 +1,45 @@
+﻿[
+  {
+    "nombre": "MarÃ­a GarcÃ­a",
+    "email": "maria@ejemplo.com",
+    "asunto": "SesiÃ³n de fotos de boda",
+    "mensaje": "Hola, me gustarÃ­a saber mÃ¡s sobre tus paquetes para bodas para el prÃ³ximo otoÃ±o.",
+    "estado": "nuevo",
+    "creado_en": "2024-11-01T10:30:00Z",
+    "metadatos": {
+      "ip": "192.168.1.100",
+      "navegador": "Chrome 120",
+      "utm_source": "instagram",
+      "proyecto_referencia": null
+    }
+  },
+  {
+    "nombre": "Carlos MartÃ­nez",
+    "email": "carlos@empresa.es",
+    "asunto": "Reportaje corporativo",
+    "mensaje": "Necesitamos fotografÃ­as para el informe anual de nuestra empresa. Â¿Podemos hablar?",
+    "estado": "leido",
+    "creado_en": "2024-11-05T16:45:00Z",
+    "metadatos": {
+      "ip": "10.0.0.5",
+      "navegador": "Firefox 121",
+      "utm_source": "google",
+      "empresa": "Tech Solutions SL",
+      "empleados": 150
+    }
+  },
+  {
+    "nombre": "Laura PÃ©rez",
+    "email": "laura.perez@gmail.com",
+    "asunto": null,
+    "mensaje": "Â¡Me encanta tu trabajo de naturaleza! Â¿Vendes prints?",
+    "estado": "respondido",
+    "creado_en": "2024-11-10T09:15:00Z",
+    "metadatos": {
+      "ip": "85.255.80.1",
+      "navegador": "Safari 17",
+      "utm_source": null,
+      "proyecto_favorito": "Bosque en OtoÃ±o"
+    }
+  }
+]
