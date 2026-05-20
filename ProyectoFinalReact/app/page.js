@@ -3,7 +3,7 @@ import Contenedor from "@/components/Contenedor";
 import Link from "next/link";
 import { Proyecto, Categoria } from "@/lib/mysql";
 
-export const metadata = { title: "Lens & Light · Portfolio de Fotografía" };
+export const metadata = { title: "Portfolio Eneas Menéndez" };
 
 async function getProyectosDestacados() {
   try {
@@ -27,7 +27,7 @@ export default async function Inicio() {
 
       <section className="hero-section text-white text-center py-5">
         <div className="container py-5">
-          <h1 className="display-3 fw-bold mb-3">LENS &amp; LIGHT</h1>
+          <h1 className="display-3 fw-bold mb-3">Portfolio Eneas Menéndez</h1>
           <p className="lead mb-4">
             Fotografía artística · Retrato · Naturaleza · Arquitectura
           </p>
@@ -79,7 +79,7 @@ export default async function Inicio() {
       </Contenedor>
 
       <footer className="bg-dark text-white text-center py-4 mt-5">
-        <p className="mb-0">© 2024 Lens &amp; Light · Todos los derechos reservados</p>
+        <p className="mb-0">Eneas Menendez</p>
       </footer>
     </>
   );

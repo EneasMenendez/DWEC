@@ -1,5 +1,6 @@
 import NavBar from "@/components/NavBar";
 import Contenedor from "@/components/Contenedor";
+import ImagenPortada from "@/components/ImagenPortada";
 import Link from "next/link";
 import { Proyecto, Categoria, Foto } from "@/lib/mysql";
 import { notFound } from "next/navigation";
@@ -20,7 +21,6 @@ export default async function DetalleProyecto({ params }) {
   let proyecto;
   try {
     proyecto = await Proyecto.findByPk(id, {
-      where: { publicado: 1 },
       include: [
         { model: Categoria, as: "categoria", attributes: ["nombre", "slug"] },
         { model: Foto, as: "fotos", required: false, order: [["orden", "ASC"]] },
@@ -44,19 +44,17 @@ export default async function DetalleProyecto({ params }) {
           </ol>
         </nav>
 
-        {proyecto.imagen_portada && (
-          <img
-            src={proyecto.imagen_portada}
-            alt={proyecto.titulo}
-            className="w-100 rounded mb-4 shadow"
-            style={{ maxHeight: "400px", objectFit: "cover" }}
-          />
-        )}
+        <ImagenPortada src={proyecto.imagen_portada} alt={proyecto.titulo} />
 
         <div className="d-flex align-items-center gap-3 mb-2">
           <h1 className="mb-0">{proyecto.titulo}</h1>
           {proyecto.categoria && (
-            <span className="badge bg-secondary fs-6">{proyecto.categoria.nombre}</span>
+            <Link
+              href={`/proyectos?categoria=${proyecto.categoria.slug}`}
+              className="badge bg-secondary fs-6 text-decoration-none"
+            >
+              {proyecto.categoria.nombre}
+            </Link>
           )}
         </div>
 

@@ -1,24 +1,39 @@
 "use client";
-import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
+import { useState, useEffect, Suspense } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 import NavBar from "@/components/NavBar";
 import Contenedor from "@/components/Contenedor";
+import Paginacion from "@/components/Paginacion";
 import Link from "next/link";
 
-export default function AdminFotos() {
+const POR_PAGINA = 10;
+
+function AdminFotosContent() {
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const proyectoParam = searchParams.get("proyecto");
+
   const [fotos, setFotos] = useState([]);
+  const [proyectoNombre, setProyectoNombre] = useState("");
   const [cargando, setCargando] = useState(true);
+  const [pagina, setPagina] = useState(1);
 
   useEffect(() => {
-    fetch("/api/fotos")
+    const url = proyectoParam ? `/api/fotos?proyecto=${proyectoParam}` : "/api/fotos";
+    fetch(url)
       .then((r) => {
         if (r.status === 401) { router.push("/login"); return null; }
         return r.json();
       })
-      .then((data) => { if (data) setFotos(data); })
+      .then((data) => {
+        if (!data) return;
+        setFotos(data);
+        if (proyectoParam && data.length > 0 && data[0].proyecto?.titulo) {
+          setProyectoNombre(data[0].proyecto.titulo);
+        }
+      })
       .finally(() => setCargando(false));
-  }, []);
+  }, [proyectoParam]);
 
   async function eliminar(id) {
     if (!confirm("¿Eliminar esta foto?")) return;
@@ -27,12 +42,31 @@ export default function AdminFotos() {
     else alert("Error al eliminar la foto.");
   }
 
+  const inicio = (pagina - 1) * POR_PAGINA;
+  const pagFotos = fotos.slice(inicio, inicio + POR_PAGINA);
+
   return (
     <>
       <NavBar admin />
       <Contenedor>
         <div className="d-flex justify-content-between align-items-center my-4">
-          <h1>Gestión de Fotos</h1>
+          <div className="d-flex align-items-center gap-3">
+            {proyectoParam && (
+              <Link href={`/admin/proyectos`} className="btn btn-outline-secondary btn-sm">
+                ← Volver a proyectos
+              </Link>
+            )}
+            <div>
+              <h1 className="mb-0">Gestión de Fotos</h1>
+              {proyectoParam && proyectoNombre && (
+                <p className="text-muted small mb-0">
+                  Filtrando por proyecto: <strong>{proyectoNombre}</strong>
+                  {" · "}
+                  <Link href="/admin/fotos" className="text-muted">Ver todas</Link>
+                </p>
+              )}
+            </div>
+          </div>
           <Link href="/admin/fotos/nuevo" className="btn btn-dark">
             <i className="bi bi-plus-lg me-1" />Nueva foto
           </Link>
@@ -56,31 +90,21 @@ export default function AdminFotos() {
               ) : fotos.length === 0 ? (
                 <tr><td colSpan={6} className="text-center text-muted py-4">No hay fotos.</td></tr>
               ) : (
-                fotos.map((f) => (
+                pagFotos.map((f) => (
                   <tr key={f.id}>
                     <td className="text-muted small">{f.id}</td>
                     <td>
-                      <img
-                        src={f.url}
-                        alt={f.titulo || ""}
-                        className="rounded"
-                        style={{ height: 48, width: 72, objectFit: "cover" }}
-                      />
+                      <img src={f.url} alt={f.titulo || ""} className="rounded"
+                        style={{ height: 48, width: 72, objectFit: "cover" }} />
                     </td>
                     <td>{f.titulo || <span className="text-muted">Sin título</span>}</td>
                     <td>{f.proyecto?.titulo ?? "—"}</td>
                     <td>{f.orden}</td>
                     <td>
-                      <Link
-                        href={`/admin/fotos/editar/${f.id}`}
-                        className="btn btn-sm btn-outline-dark me-1"
-                      >
+                      <Link href={`/admin/fotos/editar/${f.id}`} className="btn btn-sm btn-outline-dark me-1">
                         <i className="bi bi-pencil" />
                       </Link>
-                      <button
-                        className="btn btn-sm btn-outline-danger"
-                        onClick={() => eliminar(f.id)}
-                      >
+                      <button className="btn btn-sm btn-outline-danger" onClick={() => eliminar(f.id)}>
                         <i className="bi bi-trash" />
                       </button>
                     </td>
@@ -90,7 +114,21 @@ export default function AdminFotos() {
             </tbody>
           </table>
         </div>
+        <Paginacion pagina={pagina} total={fotos.length} porPagina={POR_PAGINA} onChange={setPagina} />
       </Contenedor>
     </>
+  );
+}
+
+export default function AdminFotos() {
+  return (
+    <Suspense fallback={
+      <>
+        <NavBar admin />
+        <Contenedor><p className="my-5 text-center">Cargando…</p></Contenedor>
+      </>
+    }>
+      <AdminFotosContent />
+    </Suspense>
   );
 }

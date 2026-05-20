@@ -1,17 +1,20 @@
 "use client";
-import { useState, useEffect } from "react";
+import { Fragment, useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import NavBar from "@/components/NavBar";
 import Contenedor from "@/components/Contenedor";
+import Paginacion from "@/components/Paginacion";
 
 const ESTADOS = ["nuevo", "leido", "respondido"];
 const BADGE = { nuevo: "bg-danger", leido: "bg-secondary", respondido: "bg-success" };
+const POR_PAGINA = 10;
 
 export default function AdminMensajes() {
   const router = useRouter();
   const [mensajes, setMensajes] = useState([]);
   const [cargando, setCargando] = useState(true);
   const [expandido, setExpandido] = useState(null);
+  const [pagina, setPagina] = useState(1);
 
   useEffect(() => {
     fetch("/api/mensajes")
@@ -41,6 +44,18 @@ export default function AdminMensajes() {
     else alert("Error al eliminar el mensaje.");
   }
 
+  function toggleExpandido(m) {
+    const siguiente = expandido === m.id ? null : m.id;
+    setExpandido(siguiente);
+    // Auto-marcar como leído al abrir
+    if (siguiente !== null && m.estado === "nuevo") {
+      cambiarEstado(m.id, "leido");
+    }
+  }
+
+  const inicio = (pagina - 1) * POR_PAGINA;
+  const pagMensajes = mensajes.slice(inicio, inicio + POR_PAGINA);
+
   return (
     <>
       <NavBar admin />
@@ -65,13 +80,12 @@ export default function AdminMensajes() {
               ) : mensajes.length === 0 ? (
                 <tr><td colSpan={6} className="text-center text-muted py-4">No hay mensajes.</td></tr>
               ) : (
-                mensajes.map((m) => (
-                  <>
+                pagMensajes.map((m) => (
+                  <Fragment key={m.id}>
                     <tr
-                      key={m.id}
                       className={m.estado === "nuevo" ? "table-warning" : ""}
                       style={{ cursor: "pointer" }}
-                      onClick={() => setExpandido(expandido === m.id ? null : m.id)}
+                      onClick={() => toggleExpandido(m)}
                     >
                       <td className="small text-muted">
                         {new Date(m.creado_en).toLocaleDateString("es-ES")}
@@ -99,19 +113,20 @@ export default function AdminMensajes() {
                       </td>
                     </tr>
                     {expandido === m.id && (
-                      <tr key={`${m.id}-detalle`} className="bg-light">
+                      <tr className="bg-light">
                         <td colSpan={6} className="px-4 py-3">
                           <strong>Mensaje:</strong>
                           <p className="mb-0 mt-1">{m.mensaje}</p>
                         </td>
                       </tr>
                     )}
-                  </>
+                  </Fragment>
                 ))
               )}
             </tbody>
           </table>
         </div>
+        <Paginacion pagina={pagina} total={mensajes.length} porPagina={POR_PAGINA} onChange={setPagina} />
       </Contenedor>
     </>
   );

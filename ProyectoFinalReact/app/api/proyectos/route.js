@@ -3,9 +3,15 @@ import { Proyecto, Categoria, Foto } from '@/lib/mysql';
 import { getSession } from '@/lib/auth';
 
 export async function GET(request) {
+  const { searchParams } = new URL(request.url);
+  const all = searchParams.get('all') === '1';
+
+  if (all) {
+    const session = await getSession();
+    if (!session) return NextResponse.json({ error: 'No autorizado' }, { status: 401 });
+  }
+
   try {
-    const { searchParams } = new URL(request.url);
-    const all = searchParams.get('all') === '1';
     const limit = searchParams.get('limit') ? parseInt(searchParams.get('limit')) : undefined;
 
     const proyectos = await Proyecto.findAll({
@@ -30,6 +36,10 @@ export async function POST(request) {
 
   try {
     const body = await request.json();
+
+    if (!body.titulo || body.titulo.trim().length < 1)
+      return NextResponse.json({ error: 'El título es obligatorio.' }, { status: 400 });
+
     const proyecto = await Proyecto.create({
       titulo: body.titulo,
       descripcion: body.descripcion || null,

@@ -1,8 +1,8 @@
 ﻿import "./globals.css";
 
 export const metadata = {
-  title: "Portfolio FotografÃ­a",
-  description: "Portfolio profesional de fotografÃ­a artÃ­stica y comercial",
+  title: "Portfolio Eneas Menéndez",
+  description: "Portfolio profesional de Eneas Menéndez",
 };
 
 export default function RootLayout({ children }) {
@@ -20,11 +20,13 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body>
-        {children}
+        <div id="page-wrapper">
+          {children}
+        </div>
         <script
           src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
           crossOrigin="anonymous"
-          async
+          defer
         />
       </body>
     </html>

@@ -5,6 +5,10 @@ import { hashPassword } from '@/lib/auth';
 // Llama a GET /api/setup UNA VEZ después de ejecutar el SQL para crear el admin.
 // Contraseña por defecto: admin1234  (cámbiala después desde /admin/usuarios)
 export async function GET() {
+  if (process.env.NODE_ENV === 'production') {
+    return NextResponse.json({ error: 'Endpoint desactivado en producción.' }, { status: 403 });
+  }
+
   try {
     const count = await Usuario.count({ where: { rol: 'ADMIN' } });
     if (count > 0) {

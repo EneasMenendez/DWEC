@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import NavBar from "@/components/NavBar";
 import Contenedor from "@/components/Contenedor";
 import Link from "next/link";
+import { useUnsavedChanges } from "@/hooks/useUnsavedChanges";
 
 export default function EditarFoto({ params }) {
   const { id } = use(params);
@@ -12,6 +13,7 @@ export default function EditarFoto({ params }) {
   const [proyectos, setProyectos] = useState([]);
   const [error, setError] = useState("");
   const [guardando, setGuardando] = useState(false);
+  const { markDirty, clearDirty } = useUnsavedChanges();
 
   useEffect(() => {
     Promise.all([
@@ -39,6 +41,7 @@ export default function EditarFoto({ params }) {
       });
       const json = await res.json();
       if (!res.ok) throw new Error(json.error || "Error al guardar");
+      clearDirty();
       router.push("/admin/fotos");
     } catch (err) {
       setError(err.message);
@@ -66,16 +69,12 @@ export default function EditarFoto({ params }) {
         {error && <div className="alert alert-danger">{error}</div>}
 
         {datos.url && (
-          <img
-            src={datos.url}
-            alt=""
-            className="rounded mb-4 shadow-sm"
-            style={{ maxHeight: 200, objectFit: "cover" }}
-          />
+          <img src={datos.url} alt="" className="rounded mb-4 shadow-sm"
+            style={{ maxHeight: 200, objectFit: "cover" }} />
         )}
 
         <div className="card p-4 shadow-sm">
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit} onChange={markDirty}>
             <div className="mb-3">
               <label className="form-label fw-semibold">URL de la imagen *</label>
               <input name="url" type="url" className="form-control" defaultValue={datos.url} required />

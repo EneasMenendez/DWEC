@@ -2,19 +2,50 @@ import NavBar from "@/components/NavBar";
 import Contenedor from "@/components/Contenedor";
 import Link from "next/link";
 import { Proyecto, Categoria } from "@/lib/mysql";
+import { Op } from "sequelize";
+import FiltrosProyectos from "./FiltrosProyectos";
 
 export const metadata = { title: "Proyectos · Portfolio" };
 
-async function getProyectos(categoriaSlug) {
+async function getAnios() {
+  try {
+    const rows = await Proyecto.findAll({
+      attributes: ["fecha"],
+      where: { publicado: 1, fecha: { [Op.not]: null } },
+      raw: true,
+    });
+    return [...new Set(rows.map((r) => new Date(r.fecha).getFullYear()))].sort((a, b) => b - a);
+  } catch {
+    return [];
+  }
+}
+
+async function getProyectos(categoriaSlug, buscar, anio) {
   try {
     const where = { publicado: 1 };
-    const include = [{ model: Categoria, as: "categoria", attributes: ["id", "nombre", "slug"] }];
-
-    const proyectos = await Proyecto.findAll({ where, include, order: [["creado_en", "DESC"]] });
 
     if (categoriaSlug) {
-      return proyectos.filter((p) => p.categoria?.slug === categoriaSlug);
+      const cat = await Categoria.findOne({ where: { slug: categoriaSlug } });
+      if (!cat) return [];
+      where.categoria_id = cat.id;
     }
+
+    if (buscar) {
+      where.titulo = { [Op.like]: `%${buscar}%` };
+    }
+
+    let proyectos = await Proyecto.findAll({
+      where,
+      include: [{ model: Categoria, as: "categoria", attributes: ["id", "nombre", "slug"] }],
+      order: [["creado_en", "DESC"]],
+    });
+
+    if (anio) {
+      proyectos = proyectos.filter(
+        (p) => p.fecha && new Date(p.fecha).getFullYear() === parseInt(anio)
+      );
+    }
+
     return proyectos;
   } catch {
     return [];
@@ -23,17 +54,20 @@ async function getProyectos(categoriaSlug) {
 
 async function getCategorias() {
   try {
-    return await Categoria.findAll({ order: [["nombre", "ASC"]] });
+    const rows = await Categoria.findAll({ order: [["nombre", "ASC"]], raw: true });
+    return rows.map(({ id, nombre, slug }) => ({ id, nombre, slug }));
   } catch {
     return [];
   }
 }
 
 export default async function Proyectos({ searchParams }) {
-  const { categoria: catSlug } = await searchParams;
-  const [proyectos, categorias] = await Promise.all([
-    getProyectos(catSlug),
+  const { categoria: catSlug = "", buscar = "", anio = "" } = await searchParams;
+
+  const [proyectos, categorias, anios] = await Promise.all([
+    getProyectos(catSlug, buscar, anio),
     getCategorias(),
+    getAnios(),
   ]);
 
   return (
@@ -42,34 +76,23 @@ export default async function Proyectos({ searchParams }) {
       <Contenedor>
         <div className="d-flex justify-content-between align-items-center my-4">
           <h1>Proyectos</h1>
+          <span className="text-muted small">{proyectos.length} resultado{proyectos.length !== 1 ? "s" : ""}</span>
         </div>
 
-        {/* Filtro por categoría */}
-        <div className="card mb-4 p-3 bg-light">
-          <div className="row g-2 align-items-center">
-            <div className="col-auto">
-              <Link
-                href="/proyectos"
-                className={`btn btn-sm ${!catSlug ? "btn-dark" : "btn-outline-dark"}`}
-              >
-                Todos
-              </Link>
-            </div>
-            {categorias.map((cat) => (
-              <div key={cat.id} className="col-auto">
-                <Link
-                  href={`/proyectos?categoria=${cat.slug}`}
-                  className={`btn btn-sm ${catSlug === cat.slug ? "btn-dark" : "btn-outline-dark"}`}
-                >
-                  {cat.nombre}
-                </Link>
-              </div>
-            ))}
-          </div>
-        </div>
+        <FiltrosProyectos
+          categorias={categorias}
+          anios={anios}
+          buscarInicial={buscar}
+          categoriaInicial={catSlug}
+          anioInicial={anio}
+        />
 
         {proyectos.length === 0 ? (
-          <p className="text-center text-muted py-5">No hay proyectos en esta categoría.</p>
+          <div className="text-center py-5">
+            <i className="bi bi-search text-muted" style={{ fontSize: "3rem" }} />
+            <p className="text-muted mt-3">No hay proyectos con esos filtros.</p>
+            <Link href="/proyectos" className="btn btn-outline-dark btn-sm">Ver todos</Link>
+          </div>
         ) : (
           <div className="row g-4">
             {proyectos.map((p) => (
@@ -83,7 +106,17 @@ export default async function Proyectos({ searchParams }) {
                   />
                   <div className="card-body">
                     {p.categoria && (
-                      <span className="badge bg-secondary mb-2">{p.categoria.nombre}</span>
+                      <Link
+                        href={`/proyectos?categoria=${p.categoria.slug}`}
+                        className="badge bg-secondary mb-2 text-decoration-none"
+                      >
+                        {p.categoria.nombre}
+                      </Link>
+                    )}
+                    {p.fecha && (
+                      <span className="badge bg-light text-muted ms-1 mb-2">
+                        {new Date(p.fecha).getFullYear()}
+                      </span>
                     )}
                     <h5 className="card-title">{p.titulo}</h5>
                     {p.descripcion && (

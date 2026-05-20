@@ -3,12 +3,16 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import NavBar from "@/components/NavBar";
 import Contenedor from "@/components/Contenedor";
+import Paginacion from "@/components/Paginacion";
 import Link from "next/link";
+
+const POR_PAGINA = 10;
 
 export default function AdminUsuarios() {
   const router = useRouter();
   const [usuarios, setUsuarios] = useState([]);
   const [cargando, setCargando] = useState(true);
+  const [pagina, setPagina] = useState(1);
 
   useEffect(() => {
     fetch("/api/usuarios")
@@ -30,6 +34,9 @@ export default function AdminUsuarios() {
       alert(json.error || "Error al eliminar el usuario.");
     }
   }
+
+  const inicio = (pagina - 1) * POR_PAGINA;
+  const pagUsuarios = usuarios.slice(inicio, inicio + POR_PAGINA);
 
   return (
     <>
@@ -60,7 +67,7 @@ export default function AdminUsuarios() {
               ) : usuarios.length === 0 ? (
                 <tr><td colSpan={6} className="text-center text-muted py-4">No hay usuarios.</td></tr>
               ) : (
-                usuarios.map((u) => (
+                pagUsuarios.map((u) => (
                   <tr key={u.id}>
                     <td className="text-muted small">{u.id}</td>
                     <td>{u.nombre}</td>
@@ -74,16 +81,10 @@ export default function AdminUsuarios() {
                       {u.creado_en ? new Date(u.creado_en).toLocaleDateString("es-ES") : "—"}
                     </td>
                     <td>
-                      <Link
-                        href={`/admin/usuarios/editar/${u.id}`}
-                        className="btn btn-sm btn-outline-dark me-1"
-                      >
+                      <Link href={`/admin/usuarios/editar/${u.id}`} className="btn btn-sm btn-outline-dark me-1">
                         <i className="bi bi-pencil" />
                       </Link>
-                      <button
-                        className="btn btn-sm btn-outline-danger"
-                        onClick={() => eliminar(u.id, u.nombre)}
-                      >
+                      <button className="btn btn-sm btn-outline-danger" onClick={() => eliminar(u.id, u.nombre)}>
                         <i className="bi bi-trash" />
                       </button>
                     </td>
@@ -93,6 +94,7 @@ export default function AdminUsuarios() {
             </tbody>
           </table>
         </div>
+        <Paginacion pagina={pagina} total={usuarios.length} porPagina={POR_PAGINA} onChange={setPagina} />
       </Contenedor>
     </>
   );

@@ -12,7 +12,12 @@ export async function GET() {
       Foto.count(),
       Mensaje.count({ where: { estado: 'nuevo' } }),
     ]);
-    return NextResponse.json({ proyectos, fotos, mensajes });
+    return NextResponse.json({
+      proyectos,
+      fotos,
+      mensajes,
+      usuario: { nombre: session.nombre, rol: session.rol },
+    });
   } catch (err) {
     return NextResponse.json({ error: err.message }, { status: 500 });
   }

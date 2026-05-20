@@ -8,7 +8,7 @@ function createSequelize() {
     {
       host: process.env.DB_HOST || 'localhost',
       port: parseInt(process.env.DB_PORT || '3306'),
-      dialect: 'mysql',
+      dialect: 'mariadb',
       logging: false,
     }
   );
