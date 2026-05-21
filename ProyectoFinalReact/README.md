@@ -2,6 +2,14 @@
 
 Aplicación web full-stack desarrollada con **Next.js 15** que sirve como portfolio fotográfico profesional. Permite gestionar proyectos, galerías de fotos, mensajes de contacto y comentarios de visitantes a través de un panel de administración completo.
 
+## Anotaciones
+
+La base de este proyecto está basada en el TFC (Trabajo fin de Ciclo), más simplificado y con otras tecnologías.
+No es una versión definitiva ni completamente funcional por posibles errores de seguridad o estilos de programación.
+Proyecto escalable para ser un porfolio personal sobre mi otro sector profesional.
+
+
+
 ### Usuarios de prueba (Se pueden crear más dentro de la aplicación)
 
 | Email | Contraseña | Rol |
