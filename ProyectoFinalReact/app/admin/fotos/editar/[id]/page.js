@@ -5,6 +5,7 @@ import NavBar from "@/components/NavBar";
 import Contenedor from "@/components/Contenedor";
 import Link from "next/link";
 import { useUnsavedChanges } from "@/hooks/useUnsavedChanges";
+import InputImagenUrl from "@/components/InputImagenUrl";
 
 export default function EditarFoto({ params }) {
   const { id } = use(params);
@@ -68,17 +69,9 @@ export default function EditarFoto({ params }) {
 
         {error && <div className="alert alert-danger">{error}</div>}
 
-        {datos.url && (
-          <img src={datos.url} alt="" className="rounded mb-4 shadow-sm"
-            style={{ maxHeight: 200, objectFit: "cover" }} />
-        )}
-
         <div className="card p-4 shadow-sm">
           <form onSubmit={handleSubmit} onChange={markDirty}>
-            <div className="mb-3">
-              <label className="form-label fw-semibold">URL de la imagen *</label>
-              <input name="url" type="url" className="form-control" defaultValue={datos.url} required />
-            </div>
+            <InputImagenUrl name="url" label="URL de la imagen *" defaultValue={datos.url || ""} />
             <div className="mb-3">
               <label className="form-label fw-semibold">Título</label>
               <input name="titulo" type="text" className="form-control" defaultValue={datos.titulo || ""} />

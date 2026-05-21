@@ -11,7 +11,7 @@ export default function ImagenPortada({ src, alt }) {
       src={src}
       alt={alt}
       className="w-100 rounded mb-4 shadow"
-      style={{ maxHeight: "400px", objectFit: "cover" }}
+      style={{ width: "100%", aspectRatio: "3/2", objectFit: "cover", objectPosition: "center bottom" }}
       onError={() => setError(true)}
     />
   );

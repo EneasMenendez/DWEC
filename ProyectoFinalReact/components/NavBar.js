@@ -83,6 +83,8 @@ export default function NavBar({ admin = false, onLogout }) {
                   <li><Link href="/admin/fotos" className="dropdown-item">Fotos</Link></li>
                   <li><hr className="dropdown-divider" /></li>
                   <li><Link href="/admin/categorias" className="dropdown-item">Categorías</Link></li>
+                  <li><hr className="dropdown-divider" /></li>
+                  <li><Link href="/admin/comentarios" className="dropdown-item">Comentarios</Link></li>
                 </ul>
               </li>
               <li className="nav-item">

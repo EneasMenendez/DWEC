@@ -20,7 +20,7 @@ export default function GaleriaLightbox({ fotos, tituloProyecto }) {
               src={f.url}
               className="img-fluid rounded shadow-sm"
               alt={f.titulo || tituloProyecto}
-              style={{ height: "200px", objectFit: "cover", width: "100%", cursor: "pointer" }}
+              style={{ width: "100%", aspectRatio: "3/2", objectFit: "cover", cursor: "pointer" }}
               onClick={() => setIndice(i)}
             />
             {f.titulo && (

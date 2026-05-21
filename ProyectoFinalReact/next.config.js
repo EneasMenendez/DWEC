@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  serverExternalPackages: ['sequelize', 'mariadb'],
+  serverExternalPackages: ['sequelize', 'mariadb', 'mongoose'],
   images: {
     remotePatterns: [
       {

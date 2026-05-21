@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { Proyecto, Categoria, Foto } from '@/lib/mysql';
 import { getSession } from '@/lib/auth';
+import { resolverUrlImagen } from '@/lib/imagenUrl';
 
 export async function GET(request, { params }) {
   try {
@@ -31,7 +32,7 @@ export async function PUT(request, { params }) {
     await proyecto.update({
       titulo: body.titulo ?? proyecto.titulo,
       descripcion: body.descripcion ?? proyecto.descripcion,
-      imagen_portada: body.imagen_portada ?? proyecto.imagen_portada,
+      imagen_portada: body.imagen_portada ? resolverUrlImagen(body.imagen_portada) : proyecto.imagen_portada,
       fecha: body.fecha ?? proyecto.fecha,
       publicado: body.publicado !== undefined ? (body.publicado ? 1 : 0) : proyecto.publicado,
       categoria_id: body.categoria_id ?? proyecto.categoria_id,

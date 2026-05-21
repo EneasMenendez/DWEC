@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Proyecto, Categoria, Foto } from "@/lib/mysql";
 import { notFound } from "next/navigation";
 import GaleriaLightbox from "./GaleriaLightbox";
+import SeccionComentarios from "@/components/SeccionComentarios";
 
 export async function generateMetadata({ params }) {
   const { id } = await params;
@@ -75,9 +76,14 @@ export default async function DetalleProyecto({ params }) {
         {proyecto.fotos && proyecto.fotos.length > 0 && (
           <>
             <h4 className="mt-5 mb-3">Galería de fotos</h4>
-            <GaleriaLightbox fotos={proyecto.fotos} tituloProyecto={proyecto.titulo} />
+            <GaleriaLightbox
+              fotos={proyecto.fotos.map((f) => f.get({ plain: true }))}
+              tituloProyecto={proyecto.titulo}
+            />
           </>
         )}
+
+        <SeccionComentarios proyectoId={parseInt(id)} />
 
         <div className="d-flex justify-content-between mt-5">
           <Link href="/proyectos" className="btn btn-outline-secondary">

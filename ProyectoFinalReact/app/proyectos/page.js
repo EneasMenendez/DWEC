@@ -115,7 +115,7 @@ export default async function Proyectos({ searchParams }) {
                     src={p.imagen_portada || `https://picsum.photos/seed/${p.id}/600/400`}
                     className="card-img-top"
                     alt={p.titulo}
-                    style={{ height: "220px", objectFit: "cover" }}
+                    style={{ width: "100%", aspectRatio: "3/2", objectFit: "cover" }}
                   />
                   <div className="card-body">
                     {p.categoria && (

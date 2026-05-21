@@ -11,12 +11,18 @@ function hexToRgba(hex, alpha) {
   return `rgba(${r}, ${g}, ${b}, ${alpha})`;
 }
 
-async function getHeroColor() {
+async function getHeroConfig() {
   try {
-    const row = await Configuracion.findByPk('hero_color');
-    return row?.valor ?? '#16213e';
+    const [colorRow, imagenRow] = await Promise.all([
+      Configuracion.findByPk('hero_color'),
+      Configuracion.findByPk('hero_imagen'),
+    ]);
+    return {
+      color: colorRow?.valor ?? '#16213e',
+      imagen: imagenRow?.valor ?? '',
+    };
   } catch {
-    return '#16213e';
+    return { color: '#16213e', imagen: '' };
   }
 }
 
@@ -40,9 +46,9 @@ const getProyectosDestacados = unstable_cache(
 );
 
 export default async function Inicio() {
-  const [proyectos, heroColor] = await Promise.all([
+  const [proyectos, { color: heroColor, imagen: heroImagen }] = await Promise.all([
     getProyectosDestacados(),
-    getHeroColor(),
+    getHeroConfig(),
   ]);
 
   return (
@@ -51,9 +57,13 @@ export default async function Inicio() {
 
       <section
         className="hero-section text-white text-center py-5"
-        style={{ background: hexToRgba(heroColor, 0.7) }}
+        style={heroImagen ? { backgroundImage: `url(${heroImagen})` } : {}}
       >
-        <div className="container py-5">
+        <div
+          aria-hidden="true"
+          style={{ position: "absolute", inset: 0, background: hexToRgba(heroColor, 0.7) }}
+        />
+        <div className="container py-5" style={{ position: "relative", zIndex: 1 }}>
           <h1 className="display-3 fw-bold mb-3">Eneas Menéndez Photography</h1>
           <p className="lead mb-4">
             Fotografía artística · Retrato · Naturaleza · Arquitectura
@@ -80,7 +90,7 @@ export default async function Inicio() {
                     src={p.imagen_portada || `https://picsum.photos/seed/${p.id}/600/400`}
                     className="card-img-top"
                     alt={p.titulo}
-                    style={{ height: "220px", objectFit: "cover" }}
+                    style={{ width: "100%", aspectRatio: "3/2", objectFit: "cover" }}
                   />
                   <div className="card-body">
                     {p.categoria && (

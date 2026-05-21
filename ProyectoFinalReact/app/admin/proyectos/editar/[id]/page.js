@@ -5,6 +5,7 @@ import NavBar from "@/components/NavBar";
 import Contenedor from "@/components/Contenedor";
 import Link from "next/link";
 import { useUnsavedChanges } from "@/hooks/useUnsavedChanges";
+import InputImagenUrl from "@/components/InputImagenUrl";
 
 export default function EditarProyecto({ params }) {
   const { id } = use(params);
@@ -93,11 +94,7 @@ export default function EditarProyecto({ params }) {
                 <input name="fecha" type="date" className="form-control" defaultValue={datos.fecha || ""} />
               </div>
             </div>
-            <div className="mb-3">
-              <label className="form-label fw-semibold">Imagen de portada (URL)</label>
-              <input name="imagen_portada" type="url" className="form-control"
-                defaultValue={datos.imagen_portada || ""} placeholder="https://..." />
-            </div>
+            <InputImagenUrl name="imagen_portada" label="Imagen de portada" defaultValue={datos.imagen_portada || ""} />
             <div className="mb-4 form-check">
               <input name="publicado" type="checkbox" className="form-check-input" id="publicado"
                 value="1" defaultChecked={!!datos.publicado} />

@@ -9,6 +9,7 @@ function createSequelize() {
       host: process.env.DB_HOST || 'localhost',
       port: parseInt(process.env.DB_PORT || '3306'),
       dialect: 'mariadb',
+      databaseVersion: '10.6.0', // evita el chequeo de versión en tiempo de conexión
       logging: false,
     }
   );

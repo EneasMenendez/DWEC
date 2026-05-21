@@ -5,6 +5,7 @@ import NavBar from "@/components/NavBar";
 import Contenedor from "@/components/Contenedor";
 import Link from "next/link";
 import { useUnsavedChanges } from "@/hooks/useUnsavedChanges";
+import InputImagenUrl from "@/components/InputImagenUrl";
 
 export default function NuevoProyecto() {
   const router = useRouter();
@@ -78,10 +79,7 @@ export default function NuevoProyecto() {
                 <input name="fecha" type="date" className="form-control" />
               </div>
             </div>
-            <div className="mb-3">
-              <label className="form-label fw-semibold">Imagen de portada (URL)</label>
-              <input name="imagen_portada" type="url" className="form-control" placeholder="https://..." />
-            </div>
+            <InputImagenUrl name="imagen_portada" label="Imagen de portada" />
             <div className="mb-4 form-check">
               <input name="publicado" type="checkbox" className="form-check-input" id="publicado" value="1" />
               <label className="form-check-label" htmlFor="publicado">Publicado (visible al público)</label>

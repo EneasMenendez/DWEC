@@ -1,4 +1,12 @@
 ﻿/* Estilos globales del portfolio - complementa Bootstrap */
+
+img {
+  display: block;
+  max-width: 100%;
+  object-position: center bottom;
+  margin-inline: auto;
+}
+
 html,
 body {
   height: 100%;
@@ -23,14 +31,17 @@ body {
 }
 
 .foto-card img {
+  aspect-ratio: 3 / 2;
   object-fit: cover;
-  height: 220px;
   width: 100%;
 }
 
 .hero-section {
+  position: relative;
   min-height: 60vh;
-  background: rgba(22, 33, 62, 0.7);
+  background-size: cover;
+  background-position: center bottom;
   display: flex;
   align-items: center;
+  overflow: hidden;
 }

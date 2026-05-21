@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { Foto, Proyecto } from '@/lib/mysql';
 import { getSession } from '@/lib/auth';
+import { resolverUrlImagen } from '@/lib/imagenUrl';
 
 export async function GET(request, { params }) {
   try {
@@ -27,7 +28,7 @@ export async function PUT(request, { params }) {
 
     await foto.update({
       titulo: body.titulo ?? foto.titulo,
-      url: body.url ?? foto.url,
+      url: body.url ? resolverUrlImagen(body.url) : foto.url,
       descripcion: body.descripcion ?? foto.descripcion,
       orden: body.orden ?? foto.orden,
       proyecto_id: body.proyecto_id ?? foto.proyecto_id,

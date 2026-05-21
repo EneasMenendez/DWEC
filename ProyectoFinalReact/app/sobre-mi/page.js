@@ -13,20 +13,9 @@ export default function SobreMi() {
           <div className="col-lg-8">
             <h1 className="mb-4">Sobre mí</h1>
 
-            <div className="d-flex align-items-center gap-4 mb-4">
-              {/* Sustituye el src por tu foto de perfil */}
-              <img
-                src="/foto-perfil.jpg"
-                alt="Eneas Menéndez"
-                className="rounded-circle shadow"
-                width={150}
-                height={150}
-                style={{ objectFit: "cover" }}
-              />
-              <div>
-                <h2 className="h4 mb-1">Eneas Menéndez</h2>
-                <p className="text-muted mb-0">Desarrollador web · Asturias, España</p>
-              </div>
+            <div className="mb-4">
+              <h2 className="h4 mb-1">Eneas Menéndez</h2>
+              <p className="text-muted mb-0">Fotografía · Asturias, España</p>
             </div>
 
             <p className="lead">
@@ -47,8 +36,8 @@ export default function SobreMi() {
             <h3 className="h5 mb-3">Contacto</h3>
             <ul className="list-unstyled">
               {/* Actualiza con tus datos reales */}
-              <li><i className="bi bi-envelope me-2" />admin@portfolio.com</li>
-              <li><i className="bi bi-github me-2" />github.com/EneasMenendez</li>
+              <li><i className="bi bi-envelope me-2" />eneasdmp36@educastur.com</li>
+              <li><i className="bi bi-instagram me-2" />@eneas_menendez_photography</li>
             </ul>
           </div>
         </div>

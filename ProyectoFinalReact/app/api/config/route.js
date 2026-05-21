@@ -1,6 +1,9 @@
 import { NextResponse } from 'next/server';
 import { Configuracion } from '@/lib/mysql';
 import { getSession } from '@/lib/auth';
+import { resolverUrlImagen } from '@/lib/imagenUrl';
+
+const CLAVES_IMAGEN = ['hero_imagen'];
 
 export async function GET(request) {
   const { searchParams } = new URL(request.url);
@@ -25,7 +28,8 @@ export async function PUT(request) {
       return NextResponse.json({ error: 'Campos clave y valor requeridos.' }, { status: 400 });
     }
 
-    await Configuracion.upsert({ clave, valor });
+    const valorFinal = CLAVES_IMAGEN.includes(clave) ? resolverUrlImagen(valor) : valor;
+    await Configuracion.upsert({ clave, valor: valorFinal });
     return NextResponse.json({ ok: true });
   } catch (err) {
     return NextResponse.json({ error: err.message }, { status: 500 });

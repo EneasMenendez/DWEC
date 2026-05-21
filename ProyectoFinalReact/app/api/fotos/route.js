@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { Foto, Proyecto } from '@/lib/mysql';
 import { getSession } from '@/lib/auth';
+import { resolverUrlImagen } from '@/lib/imagenUrl';
 
 export async function GET(request) {
   try {
@@ -33,7 +34,7 @@ export async function POST(request) {
 
     const foto = await Foto.create({
       titulo: body.titulo?.trim() || null,
-      url: body.url.trim(),
+      url: resolverUrlImagen(body.url.trim()),
       descripcion: body.descripcion?.trim() || null,
       orden: body.orden ?? 0,
       proyecto_id: parseInt(body.proyecto_id),

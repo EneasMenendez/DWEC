@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { Proyecto, Categoria, Foto } from '@/lib/mysql';
 import { getSession } from '@/lib/auth';
+import { resolverUrlImagen } from '@/lib/imagenUrl';
 
 export async function GET(request) {
   const { searchParams } = new URL(request.url);
@@ -43,7 +44,7 @@ export async function POST(request) {
     const proyecto = await Proyecto.create({
       titulo: body.titulo,
       descripcion: body.descripcion || null,
-      imagen_portada: body.imagen_portada || null,
+      imagen_portada: body.imagen_portada ? resolverUrlImagen(body.imagen_portada) : null,
       fecha: body.fecha || null,
       publicado: body.publicado ? 1 : 0,
       categoria_id: body.categoria_id || null,

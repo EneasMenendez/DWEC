@@ -81,7 +81,10 @@ export default async function PreviewProyecto({ params }) {
         {proyecto.fotos && proyecto.fotos.length > 0 && (
           <>
             <h4 className="mt-5 mb-3">Galería de fotos</h4>
-            <GaleriaLightbox fotos={proyecto.fotos} tituloProyecto={proyecto.titulo} />
+            <GaleriaLightbox
+              fotos={proyecto.fotos.map((f) => f.get({ plain: true }))}
+              tituloProyecto={proyecto.titulo}
+            />
           </>
         )}
 

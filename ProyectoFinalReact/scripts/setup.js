@@ -125,6 +125,7 @@ CREATE TABLE IF NOT EXISTS configuracion (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT IGNORE INTO configuracion (clave, valor) VALUES ('hero_color', '#16213e');
+INSERT IGNORE INTO configuracion (clave, valor) VALUES ('hero_imagen', '');
 `;
 
 // ── Inicializar BD ─────────────────────────────────────────────────────────────

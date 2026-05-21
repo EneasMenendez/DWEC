@@ -12,6 +12,7 @@
     "bootstrap": "^5.3.8",
     "bootstrap-icons": "^1.13.1",
     "mariadb": "^3.5.2",
+    "mongoose": "^9.6.2",
     "next": "^15.5.18",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
