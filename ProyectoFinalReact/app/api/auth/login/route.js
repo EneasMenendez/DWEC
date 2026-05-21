@@ -1,8 +1,23 @@
 import { NextResponse } from 'next/server';
 import { Usuario } from '@/lib/mysql';
 import { verifyPassword, createToken, sessionCookieOptions } from '@/lib/auth';
+import { checkRateLimit } from '@/lib/rateLimit';
+import { checkCsrf } from '@/lib/csrf';
 
 export async function POST(request) {
+  if (!checkCsrf(request)) {
+    return NextResponse.json({ error: 'Petición no permitida.' }, { status: 403 });
+  }
+
+  const ip = request.headers.get('x-forwarded-for')?.split(',')[0].trim() ?? 'unknown';
+  const { limited, retryAfter } = checkRateLimit(`login:${ip}`, { max: 5, windowMs: 15 * 60 * 1000 });
+  if (limited) {
+    return NextResponse.json(
+      { error: `Demasiados intentos. Espera ${retryAfter} segundos.` },
+      { status: 429, headers: { 'Retry-After': String(retryAfter) } }
+    );
+  }
+
   try {
     const { email, contrasena, recordarme } = await request.json();
 

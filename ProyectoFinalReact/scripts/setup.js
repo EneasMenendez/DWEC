@@ -118,6 +118,13 @@ CREATE TABLE IF NOT EXISTS mensajes (
   estado    ENUM('nuevo','leido','respondido') DEFAULT 'nuevo',
   creado_en DATETIME DEFAULT NOW()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE IF NOT EXISTS configuracion (
+  clave  VARCHAR(100) PRIMARY KEY,
+  valor  TEXT NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+INSERT IGNORE INTO configuracion (clave, valor) VALUES ('hero_color', '#16213e');
 `;
 
 // ── Inicializar BD ─────────────────────────────────────────────────────────────

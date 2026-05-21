@@ -124,5 +124,14 @@ Etiqueta.belongsToMany(Foto, {
   as: 'fotos',
 });
 
-export { sequelize, Usuario, Categoria, Proyecto, Foto, Etiqueta, Mensaje };
+const Configuracion = sequelize.define(
+  'Configuracion',
+  {
+    clave: { type: DataTypes.STRING(100), primaryKey: true },
+    valor: { type: DataTypes.TEXT, allowNull: false },
+  },
+  { tableName: 'configuracion', timestamps: false }
+);
+
+export { sequelize, Usuario, Categoria, Proyecto, Foto, Etiqueta, Mensaje, Configuracion };
 export default sequelize;

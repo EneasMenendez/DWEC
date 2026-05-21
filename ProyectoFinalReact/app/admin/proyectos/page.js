@@ -166,6 +166,9 @@ export default function AdminProyectos() {
                       <Link href={`/admin/fotos?proyecto=${p.id}`} className="btn btn-sm btn-outline-secondary me-1" title="Ver fotos">
                         <i className="bi bi-images" />
                       </Link>
+                      <Link href={`/preview/${p.id}`} className="btn btn-sm btn-outline-info me-1" title="Vista previa" target="_blank">
+                        <i className="bi bi-eye" />
+                      </Link>
                       <Link href={`/admin/proyectos/editar/${p.id}`} className="btn btn-sm btn-outline-dark me-1">
                         <i className="bi bi-pencil" />
                       </Link>

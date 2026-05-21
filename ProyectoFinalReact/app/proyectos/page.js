@@ -4,62 +4,75 @@ import Link from "next/link";
 import { Proyecto, Categoria } from "@/lib/mysql";
 import { Op } from "sequelize";
 import FiltrosProyectos from "./FiltrosProyectos";
+import { unstable_cache } from "next/cache";
 
 export const metadata = { title: "Proyectos · Portfolio" };
 
-async function getAnios() {
-  try {
-    const rows = await Proyecto.findAll({
-      attributes: ["fecha"],
-      where: { publicado: 1, fecha: { [Op.not]: null } },
-      raw: true,
-    });
-    return [...new Set(rows.map((r) => new Date(r.fecha).getFullYear()))].sort((a, b) => b - a);
-  } catch {
-    return [];
-  }
-}
-
-async function getProyectos(categoriaSlug, buscar, anio) {
-  try {
-    const where = { publicado: 1 };
-
-    if (categoriaSlug) {
-      const cat = await Categoria.findOne({ where: { slug: categoriaSlug } });
-      if (!cat) return [];
-      where.categoria_id = cat.id;
+const getAnios = unstable_cache(
+  async () => {
+    try {
+      const rows = await Proyecto.findAll({
+        attributes: ["fecha"],
+        where: { publicado: 1, fecha: { [Op.not]: null } },
+        raw: true,
+      });
+      return [...new Set(rows.map((r) => new Date(r.fecha).getFullYear()))].sort((a, b) => b - a);
+    } catch {
+      return [];
     }
+  },
+  ["proyectos-anios"],
+  { revalidate: 3600, tags: ["proyectos"] }
+);
 
-    if (buscar) {
-      where.titulo = { [Op.like]: `%${buscar}%` };
+const getProyectos = unstable_cache(
+  async (categoriaSlug, buscar, anio) => {
+    try {
+      const where = { publicado: 1 };
+
+      if (categoriaSlug) {
+        const cat = await Categoria.findOne({ where: { slug: categoriaSlug } });
+        if (!cat) return [];
+        where.categoria_id = cat.id;
+      }
+
+      if (buscar) {
+        where.titulo = { [Op.like]: `%${buscar}%` };
+      }
+
+      let proyectos = await Proyecto.findAll({
+        where,
+        include: [{ model: Categoria, as: "categoria", attributes: ["id", "nombre", "slug"] }],
+        order: [["creado_en", "DESC"]],
+      });
+
+      if (anio) {
+        proyectos = proyectos.filter(
+          (p) => p.fecha && new Date(p.fecha).getFullYear() === parseInt(anio)
+        );
+      }
+
+      return proyectos;
+    } catch {
+      return [];
     }
+  },
+  ["proyectos-lista"],
+  { revalidate: 60, tags: ["proyectos"] }
+);
 
-    let proyectos = await Proyecto.findAll({
-      where,
-      include: [{ model: Categoria, as: "categoria", attributes: ["id", "nombre", "slug"] }],
-      order: [["creado_en", "DESC"]],
-    });
-
-    if (anio) {
-      proyectos = proyectos.filter(
-        (p) => p.fecha && new Date(p.fecha).getFullYear() === parseInt(anio)
-      );
+const getCategorias = unstable_cache(
+  async () => {
+    try {
+      const rows = await Categoria.findAll({ order: [["nombre", "ASC"]], raw: true });
+      return rows.map(({ id, nombre, slug }) => ({ id, nombre, slug }));
+    } catch {
+      return [];
     }
-
-    return proyectos;
-  } catch {
-    return [];
-  }
-}
-
-async function getCategorias() {
-  try {
-    const rows = await Categoria.findAll({ order: [["nombre", "ASC"]], raw: true });
-    return rows.map(({ id, nombre, slug }) => ({ id, nombre, slug }));
-  } catch {
-    return [];
-  }
-}
+  },
+  ["categorias"],
+  { revalidate: 3600, tags: ["categorias"] }
+);
 
 export default async function Proyectos({ searchParams }) {
   const { categoria: catSlug = "", buscar = "", anio = "" } = await searchParams;

@@ -4,19 +4,19 @@ import ImagenPortada from "@/components/ImagenPortada";
 import Link from "next/link";
 import { Proyecto, Categoria, Foto } from "@/lib/mysql";
 import { notFound } from "next/navigation";
-import GaleriaLightbox from "./GaleriaLightbox";
+import GaleriaLightbox from "@/app/proyectos/[id]/GaleriaLightbox";
 
 export async function generateMetadata({ params }) {
   const { id } = await params;
   try {
     const p = await Proyecto.findByPk(id, { attributes: ["titulo"] });
-    return { title: p ? `${p.titulo} · Portfolio` : "Proyecto no encontrado" };
+    return { title: p ? `[Vista previa] ${p.titulo} · Portfolio` : "Proyecto no encontrado" };
   } catch {
-    return { title: "Proyecto" };
+    return { title: "Vista previa" };
   }
 }
 
-export default async function DetalleProyecto({ params }) {
+export default async function PreviewProyecto({ params }) {
   const { id } = await params;
 
   let proyecto;
@@ -31,16 +31,24 @@ export default async function DetalleProyecto({ params }) {
     proyecto = null;
   }
 
-  if (!proyecto || !proyecto.publicado) notFound();
+  if (!proyecto) notFound();
 
   return (
     <>
-      <NavBar />
+      <NavBar admin />
       <Contenedor>
+        {!proyecto.publicado && (
+          <div className="alert alert-warning d-flex align-items-center gap-2 mt-3">
+            <i className="bi bi-eye-slash-fill" />
+            <span>
+              <strong>Vista previa:</strong> este proyecto está en borrador y no es visible para el público.
+            </span>
+          </div>
+        )}
+
         <nav aria-label="breadcrumb" className="mt-3">
           <ol className="breadcrumb">
-            <li className="breadcrumb-item"><Link href="/">Inicio</Link></li>
-            <li className="breadcrumb-item"><Link href="/proyectos">Proyectos</Link></li>
+            <li className="breadcrumb-item"><Link href="/admin/proyectos">Proyectos</Link></li>
             <li className="breadcrumb-item active">{proyecto.titulo}</li>
           </ol>
         </nav>
@@ -50,13 +58,11 @@ export default async function DetalleProyecto({ params }) {
         <div className="d-flex align-items-center gap-3 mb-2">
           <h1 className="mb-0">{proyecto.titulo}</h1>
           {proyecto.categoria && (
-            <Link
-              href={`/proyectos?categoria=${proyecto.categoria.slug}`}
-              className="badge bg-secondary fs-6 text-decoration-none"
-            >
-              {proyecto.categoria.nombre}
-            </Link>
+            <span className="badge bg-secondary fs-6">{proyecto.categoria.nombre}</span>
           )}
+          <span className={`badge ${proyecto.publicado ? "bg-success" : "bg-secondary"}`}>
+            {proyecto.publicado ? "Publicado" : "Borrador"}
+          </span>
         </div>
 
         {proyecto.fecha && (
@@ -80,11 +86,11 @@ export default async function DetalleProyecto({ params }) {
         )}
 
         <div className="d-flex justify-content-between mt-5">
-          <Link href="/proyectos" className="btn btn-outline-secondary">
-            ← Todos los proyectos
+          <Link href="/admin/proyectos" className="btn btn-outline-secondary">
+            ← Volver al admin
           </Link>
-          <Link href="/contacto" className="btn btn-dark">
-            Solicitar presupuesto
+          <Link href={`/admin/proyectos/editar/${proyecto.id}`} className="btn btn-dark">
+            <i className="bi bi-pencil me-1" />Editar proyecto
           </Link>
         </div>
       </Contenedor>

@@ -33,7 +33,6 @@ export default function NavBar({ admin = false, onLogout }) {
       <div className="container">
         <Link href="/" className="navbar-brand d-flex align-items-center gap-2">
           <img src="/logo.svg" alt="Logo" width={32} height={32} />
-          Portfolio Eneas Menéndez
         </Link>
 
         <button
@@ -89,6 +88,11 @@ export default function NavBar({ admin = false, onLogout }) {
               <li className="nav-item">
                 <Link href="/admin/mensajes" className={`nav-link ${esActiva("/admin/mensajes")}`}>
                   Mensajes
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link href="/admin/ajustes" className={`nav-link ${esActiva("/admin/ajustes")}`}>
+                  <i className="bi bi-gear me-1" />Ajustes
                 </Link>
               </li>
               {esAdmin && (

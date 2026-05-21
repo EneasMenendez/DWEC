@@ -1,6 +1,8 @@
 import { NextResponse } from 'next/server';
 import { Mensaje } from '@/lib/mysql';
 import { getSession } from '@/lib/auth';
+import { checkRateLimit } from '@/lib/rateLimit';
+import { checkCsrf } from '@/lib/csrf';
 
 export async function GET() {
   const session = await getSession();
@@ -15,6 +17,19 @@ export async function GET() {
 }
 
 export async function POST(request) {
+  if (!checkCsrf(request)) {
+    return NextResponse.json({ error: 'Petición no permitida.' }, { status: 403 });
+  }
+
+  const ip = request.headers.get('x-forwarded-for')?.split(',')[0].trim() ?? 'unknown';
+  const { limited, retryAfter } = checkRateLimit(`mensajes:${ip}`, { max: 3, windowMs: 60 * 60 * 1000 });
+  if (limited) {
+    return NextResponse.json(
+      { error: `Demasiados mensajes. Espera ${retryAfter} segundos.` },
+      { status: 429, headers: { 'Retry-After': String(retryAfter) } }
+    );
+  }
+
   try {
     const body = await request.json();
 

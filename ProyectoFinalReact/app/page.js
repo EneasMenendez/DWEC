@@ -1,33 +1,60 @@
 import NavBar from "@/components/NavBar";
 import Contenedor from "@/components/Contenedor";
 import Link from "next/link";
-import { Proyecto, Categoria } from "@/lib/mysql";
+import { Proyecto, Categoria, Configuracion } from "@/lib/mysql";
+import { unstable_cache } from "next/cache";
 
-export const metadata = { title: "Portfolio Eneas Menéndez" };
+function hexToRgba(hex, alpha) {
+  const r = parseInt(hex.slice(1, 3), 16);
+  const g = parseInt(hex.slice(3, 5), 16);
+  const b = parseInt(hex.slice(5, 7), 16);
+  return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+}
 
-async function getProyectosDestacados() {
+async function getHeroColor() {
   try {
-    return await Proyecto.findAll({
-      where: { publicado: 1 },
-      include: [{ model: Categoria, as: "categoria", attributes: ["nombre"] }],
-      order: [["creado_en", "DESC"]],
-      limit: 3,
-    });
+    const row = await Configuracion.findByPk('hero_color');
+    return row?.valor ?? '#16213e';
   } catch {
-    return [];
+    return '#16213e';
   }
 }
 
+export const metadata = { title: "Portfolio Eneas Menéndez" };
+
+const getProyectosDestacados = unstable_cache(
+  async () => {
+    try {
+      return await Proyecto.findAll({
+        where: { publicado: 1 },
+        include: [{ model: Categoria, as: "categoria", attributes: ["nombre"] }],
+        order: [["creado_en", "DESC"]],
+        limit: 3,
+      });
+    } catch {
+      return [];
+    }
+  },
+  ["proyectos-destacados"],
+  { revalidate: 3600, tags: ["proyectos"] }
+);
+
 export default async function Inicio() {
-  const proyectos = await getProyectosDestacados();
+  const [proyectos, heroColor] = await Promise.all([
+    getProyectosDestacados(),
+    getHeroColor(),
+  ]);
 
   return (
     <>
       <NavBar />
 
-      <section className="hero-section text-white text-center py-5">
+      <section
+        className="hero-section text-white text-center py-5"
+        style={{ background: hexToRgba(heroColor, 0.7) }}
+      >
         <div className="container py-5">
-          <h1 className="display-3 fw-bold mb-3">Portfolio Eneas Menéndez</h1>
+          <h1 className="display-3 fw-bold mb-3">Eneas Menéndez Photography</h1>
           <p className="lead mb-4">
             Fotografía artística · Retrato · Naturaleza · Arquitectura
           </p>
@@ -78,8 +105,11 @@ export default async function Inicio() {
         )}
       </Contenedor>
 
-      <footer className="bg-dark text-white text-center py-4 mt-5">
-        <p className="mb-0">Eneas Menendez</p>
+      <footer className="bg-dark text-white py-5 mt-5">
+        <div className="container text-center">
+          <p className="fs-5 fw-semibold mb-1 tracking-wide">Eneas Menéndez Photography</p>
+          <p className="text-secondary small mb-0">© {new Date().getFullYear()} · Todos los derechos reservados</p>
+        </div>
       </footer>
     </>
   );
