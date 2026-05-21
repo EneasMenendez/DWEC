@@ -5,3 +5,4 @@
 *.log
 *.next
 *.env.local
+.env*
