@@ -9,16 +9,23 @@ function createSequelize() {
       host: process.env.DB_HOST || 'localhost',
       port: parseInt(process.env.DB_PORT || '3306'),
       dialect: 'mariadb',
-      databaseVersion: '10.6.0', // evita el chequeo de versión en tiempo de conexión
+      databaseVersion: '10.6.0',
       logging: false,
+      pool: {
+        max: 2,
+        min: 0,
+        acquire: 30000,
+        idle: 10000,
+      },
+      dialectOptions: {
+        connectTimeout: 20000,
+        ssl: { rejectUnauthorized: false },
+      },
     }
   );
 }
 
-const sequelize =
-  process.env.NODE_ENV === 'production'
-    ? createSequelize()
-    : (global._sequelize ??= createSequelize());
+const sequelize = global._sequelize ??= createSequelize();
 
 // ── Models ────────────────────────────────────────────────────────────────────
 
