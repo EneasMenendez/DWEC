@@ -11,7 +11,6 @@ Proyecto escalable para ser un porfolio personal sobre mi otro sector profesiona
 https://dwesfinaleneas.vercel.app/ 
 
 
-
 ### Usuarios de prueba (Se pueden crear más dentro de la aplicación)
 
 | Email | Contraseña | Rol |
