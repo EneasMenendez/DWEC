@@ -7,7 +7,7 @@ setInterval(() => {
   for (const [key, entry] of store) {
     if (now > entry.resetAt) store.delete(key);
   }
-}, 60_000);
+}, 60_000).unref();
 
 /**
  * @param {string} key       - clave única (ej. "login:1.2.3.4")
