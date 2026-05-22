@@ -43,7 +43,7 @@ export async function POST(request) {
     res.cookies.set(opts.name, token, opts);
     return res;
   } catch (err) {
-    console.error(err);
-    return NextResponse.json({ error: 'Error del servidor' }, { status: 500 });
+    console.error('[LOGIN ERROR]', err.message, err.code ?? '');
+    return NextResponse.json({ error: err.message }, { status: 500 });
   }
 }
