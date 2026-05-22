@@ -1,23 +1,7 @@
-# Credenciales y variables de entorno
-*.env
-*.env.local
-*.env.*.local
+.vercel
+.env
 
-# Dependencias
-node_modules/
-
-# Next.js
-.next/
-out/
-
-# Logs
+*node_modules
 *.log
-npm-debug.log*
-
-# Sistema operativo
-.DS_Store
-Thumbs.db
-
-# Editor
-.vscode/
-.idea/
+*.next
+*.env.local
