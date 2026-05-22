@@ -1,12 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  serverExternalPackages: ['sequelize', 'mariadb', 'mongoose'],
-  outputFileTracingIncludes: {
-    '/api/**/*': [
-      './node_modules/mariadb/**/*',
-      './node_modules/sequelize/**/*',
-    ],
-  },
+  serverExternalPackages: ['sequelize', 'mysql2', 'mongoose'],
   images: {
     remotePatterns: [
       {

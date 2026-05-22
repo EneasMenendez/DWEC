@@ -8,8 +8,7 @@ function createSequelize() {
     {
       host: process.env.DB_HOST || 'localhost',
       port: parseInt(process.env.DB_PORT || '3306'),
-      dialect: 'mariadb',
-      databaseVersion: '10.6.0',
+      dialect: 'mysql',
       logging: false,
       pool: {
         max: 2,
@@ -19,7 +18,6 @@ function createSequelize() {
       },
       dialectOptions: {
         connectTimeout: 20000,
-        ssl: { rejectUnauthorized: false },
       },
     }
   );
