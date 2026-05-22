@@ -1,6 +1,5 @@
 import { createHmac, randomBytes, scrypt } from 'crypto';
 import { promisify } from 'util';
-import { cookies } from 'next/headers';
 
 const scryptAsync = promisify(scrypt);
 const COOKIE_NAME = 'session';
@@ -45,6 +44,7 @@ export function verifyToken(token) {
 }
 
 export async function getSession() {
+  const { cookies } = await import('next/headers');
   const jar = await cookies();
   const token = jar.get(COOKIE_NAME)?.value;
   if (!token) return null;
