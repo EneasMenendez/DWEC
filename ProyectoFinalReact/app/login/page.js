@@ -20,8 +20,10 @@ export default function Login() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(datos),
       });
-      const json = await res.json();
-      if (!res.ok) throw new Error(json.error || "Credenciales incorrectas");
+      const text = await res.text();
+      let json;
+      try { json = JSON.parse(text); } catch { json = {}; }
+      if (!res.ok) throw new Error(json.error || `Error del servidor (${res.status})`);
       router.push("/dashboard");
     } catch (err) {
       setError(err.message);

@@ -4,6 +4,12 @@
  * - Inicializa la base de datos con los datos de scripts/data.json.
  */
 
+// En Vercel/CI la BD ya está configurada y .env.local no existe — saltar todo
+if (process.env.VERCEL || process.env.CI) {
+  console.log('Entorno Vercel/CI detectado. Saltando setup local.');
+  process.exit(0);
+}
+
 const { randomBytes, scrypt } = require('crypto');
 const { readFileSync, writeFileSync } = require('fs');
 const { resolve } = require('path');
