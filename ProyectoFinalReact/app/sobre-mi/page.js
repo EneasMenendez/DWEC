@@ -20,7 +20,7 @@ export default function SobreMi() {
 
             <p className="lead">
               {/* Escribe aquí tu presentación personal */}
-              Hola, soy Eneas. Añade aquí tu descripción personal.
+              Hola, soy Eneas.
             </p>
 
             <hr className="my-4" />
